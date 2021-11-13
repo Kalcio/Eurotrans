@@ -20,10 +20,14 @@
             <td>{{$cliente->nombre}}</td>
             <td>{{$cliente->numero}}</td>
             <td>{{$cliente->email}}</td>
-            <td>{{$cliente->direccion}</td>
+            <td>{{$cliente->direccion}}</td>
             <td>
-                <a class="btn btn-info">Editar</a>
-                <button>Borrar</button>
+                <form action="{{route('clientes.destroy', $cliente->id)}}" method="POST">
+                    <a href="/clientes/{{$cliente->id}}/edit" class="btn btn-info">Editar</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Borrar</button>
+                </form>
             </td>
         </tr>
         @endforeach

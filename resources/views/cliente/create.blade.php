@@ -4,13 +4,14 @@
 <h2>CREAR REGISTRO</h2>
 
 <form action="/clientes" method="POST">
+    @csrf
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
         <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Número de contacto</label>
-        <input id="numero" name="numero" type="number" class="form-control" tabindex="2">
+        <input id="numero" name="numero" type="tel" class="form-control" tabindex="2">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Correo Electronico</label>
