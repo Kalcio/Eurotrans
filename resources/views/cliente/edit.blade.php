@@ -1,8 +1,13 @@
-@extends('layouts.plantillabase')
+@extends('adminlte::page')
 
-@section('contenido')
-<h2>EDITAR REGISTROS</h2>
+@section('title', 'Editar cliente')
 
+@section('content_header')
+    <h1>Editar cliente</h1>
+@stop
+
+@section('content')
+    
 <form action="/clientes/{{$cliente->id}}" method="POST">
     @csrf
     @method('PUT')
@@ -25,5 +30,12 @@
     <a href="/clientes" class="btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
 </form>
+@stop
 
-@endsection
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop
