@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>EURO</b>TRANS',
-    'logo_img' => 'vendor/adminlte/dist/img/LogoWhite_E.png',
+    'logo_img' => 'vendor/adminlte/dist/img/LogoTrasparente.png',
     'logo_img_class' => 'img-circle',
     'logo_img_xl' => 'vendor/adminlte/dist/img/Logobig_white.png',
     'logo_img_xl_class' => 'brand-image-xs',
@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'dash',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -247,16 +247,16 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
+            'text'        => 'Clientes',
+            'url'         => 'clientes',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'label'       => 'CRUD',
+            'label_color' => 'warning',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Configuración de la cuenta'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Perfil de usuario',
+            'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
