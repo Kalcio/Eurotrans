@@ -30,3 +30,7 @@ Route::get('/dash/crud', function() {
 Route::get('/dash/crud/create', function() {
     return view('crud.create');
 });
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
