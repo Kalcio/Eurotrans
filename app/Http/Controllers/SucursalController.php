@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sucursal;
 
 class SucursalController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        //
+        $sucursals = Sucursal::all();
+        return view('sucursal.index')->with('sucursals', $sucursals);
     }
 
     /**
@@ -23,7 +28,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        //
+        return view('sucursal.create');
     }
 
     /**
@@ -34,7 +39,14 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sucursals = new Sucursal();
+
+        $sucursals->numero = $request->get('numero');
+        $sucursals->direccion = $request->get('direccion');
+
+        $sucursals->save();
+
+        return redirect('/sucursals');
     }
 
     /**
@@ -56,7 +68,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sucursal = Sucursal::find($id);
+        return view('sucursal.edit')->with('sucursal', $sucursal);
     }
 
     /**
@@ -68,7 +81,14 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sucursal = Sucursal::find($id);
+
+        $sucursal->numero = $request->get('numero');
+        $sucursal->direccion = $request->get('direccion');
+
+        $sucursal->save();
+
+        return redirect('/sucursals');
     }
 
     /**
@@ -79,6 +99,9 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sucursal = Sucursal::find($id);
+        $sucursal->delete();
+        return redirect('/sucursals');
     }
 }
+
