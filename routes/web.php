@@ -19,15 +19,16 @@ Route::get('/', function () {
 
 //Ruta Tablas
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
-Route::resource('provee', 'App\Http\Controllers\ProveeController');
-Route::resource('servicio', 'App\Http\Controllers\ServicioController');
-Route::resource('tipo', 'App\Http\Controllers\TipoController');
-Route::resource('ruta', 'App\Http\Controllers\RutaController');
-Route::resource('agente', 'App\Http\Controllers\AgenteController');
-Route::resource('puede_poseer', 'App\Http\Controllers\Puede_PoseerController');
-Route::resource('proveedor', 'App\Http\Controllers\ProveedorController');
-Route::resource('estado', 'App\Http\Controllers\EstadoController');
-Route::resource('incoterm', 'App\Http\Controllers\IncotermController');
+Route::resource('empleados', 'App\Http\Controllers\EmpleadoController');
+Route::resource('provees', 'App\Http\Controllers\ProveeController');
+Route::resource('servicios', 'App\Http\Controllers\ServicioController');
+Route::resource('tipos', 'App\Http\Controllers\TipoController');
+Route::resource('rutas', 'App\Http\Controllers\RutaController');
+Route::resource('agentes', 'App\Http\Controllers\AgenteController');
+Route::resource('puede_poseers', 'App\Http\Controllers\Puede_PoseerController');
+Route::resource('proveedors', 'App\Http\Controllers\ProveedorController');
+Route::resource('estados', 'App\Http\Controllers\EstadoController');
+Route::resource('incoterms', 'App\Http\Controllers\IncotermController');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dash', function () {
     return view('dash.index');
