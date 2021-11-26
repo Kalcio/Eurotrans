@@ -267,6 +267,13 @@ return [
             'label'       => 'CRUD',
             'label_color' => 'warning',
         ],
+        [
+            'text'        => 'Servicios',
+            'url'         => 'servicios',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 'CRUD',
+            'label_color' => 'warning',
+        ],
         ['header' => 'Configuración de la cuenta'],
         [
             'text' => 'Perfil de usuario',
