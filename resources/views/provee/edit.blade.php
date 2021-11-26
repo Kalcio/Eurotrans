@@ -13,15 +13,15 @@
     @method('PUT')
     <div class="mb-3">
         <label for="" class="form-label">Fecha</label>
-        <input id="fecha" name="fecha" type="text" class="form-control" tabindex="1">
+        <input id="fecha" name="fecha" type="text" class="form-control" value="{{$provee->fecha}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Precio</label>
-        <input id="precio" name="precio" type="tel" class="form-control" tabindex="2">
+        <input id="precio" name="precio" type="tel" class="form-control" value="{{$provee->precio}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Forma Pago</label>
-        <input id="forma_pago" name="forma_pago" type="text" class="form-control" tabindex="3">
+        <input id="forma_pago" name="forma_pago" type="text" class="form-control" value="{{$provee->forma_pago}}">
     </div>
     <a href="/provees" class="btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
