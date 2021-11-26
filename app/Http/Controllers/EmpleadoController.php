@@ -18,7 +18,7 @@ class EmpleadoController extends Controller
     public function index()
     {
         $empleados = Empleado::all();
-        return view('Empleado.index')->with('Empleados', $empleados);
+        return view('empleado.index')->with('empleados', $empleados);
     }
 
     /**
@@ -39,16 +39,26 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $empleados = new Empleado();
+
+        $empleados->rut = $request->get('rut');
+        $empleados->nombre = $request->get('nombre');
+        $empleados->numero = $request->get('numero');
+        $empleados->correo = $request->get('correo');
+        $empleados->direccion = $request->get('direccion');
+
+        $empleados->save();
+
+        return redirect('/empleados');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $rut
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($rut)
     {
         //
     }
@@ -56,34 +66,46 @@ class EmpleadoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $rut
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($rut)
     {
-        //
+        $empleado = Empleado::find($rut);
+        return view('empleado.edit')->with('empleado', $empleado);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $rut
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $rut)
     {
-        //
+        $empleado = Empleado::find($rut);
+
+        $empleado->nombre = $request->get('nombre');
+        $empleado->numero = $request->get('numero');
+        $empleado->correo = $request->get('correo');
+        $empleado->direccion = $request->get('direccion');
+
+        $empleado->save();
+
+        return redirect('/empleados');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $rut
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($rut)
     {
-        //
+        $empleado = Empleado::find($rut);
+        $empleado->delete();
+        return redirect('/empleados');
     }
 }
