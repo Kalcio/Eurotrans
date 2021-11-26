@@ -81,4 +81,10 @@ class SucursalController extends Controller
     {
         //
     }
+
+    public function contar()
+    {
+        $count = Sucursal::count();
+        return $count;
+    }
 }

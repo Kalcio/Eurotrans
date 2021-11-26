@@ -107,4 +107,10 @@ class ClienteController extends Controller
         $cliente->delete();
         return redirect('/clientes');
     }
+
+    public function contar()
+    {
+        $count = Cliente::count();
+        return $count;
+    }
 }

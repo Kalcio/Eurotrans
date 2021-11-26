@@ -108,4 +108,10 @@ class EmpleadoController extends Controller
         $empleado->delete();
         return redirect('/empleados');
     }
+
+    public function contar()
+    {
+        $count = Empleado::count();
+        return $count;
+    }
 }

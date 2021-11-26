@@ -81,4 +81,10 @@ class ProveedorController extends Controller
     {
         //
     }
+
+    public function contar()
+    {
+        $count = Proveedor::count();
+        return $count;
+    }
 }
