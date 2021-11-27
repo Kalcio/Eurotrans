@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Puede_Poseer;
 
 class Puede_PoseerController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class Puede_PoseerController extends Controller
      */
     public function index()
     {
-        //
+        $puede_poseers = Puede_Poseer::all();
+        return view('puede_poseer.index')->with('puede_poseers', $puede_poseers);
     }
 
     /**
@@ -23,7 +28,7 @@ class Puede_PoseerController extends Controller
      */
     public function create()
     {
-        //
+        return view('puede_poseer.create');
     }
 
     /**
@@ -34,7 +39,13 @@ class Puede_PoseerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $puede_poseers = new Puede_Poseer();
+
+        $puede_poseers->estado = $request->get('estado');
+
+        $puede_poseers->save();
+
+        return redirect('/puede_poseers');
     }
 
     /**
@@ -56,7 +67,8 @@ class Puede_PoseerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $puede_poseer = Puede_Poseer::find($id);
+        return view('puede_poseer.edit')->with('puede_poseer', $puede_poseer);
     }
 
     /**
@@ -68,7 +80,13 @@ class Puede_PoseerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $puede_poseer = Puede_Poseer::find($id);
+
+        $puede_poseer->estado = $request->get('estado');
+
+        $puede_poseer->save();
+
+        return redirect('/puede_poseers');
     }
 
     /**
@@ -79,6 +97,8 @@ class Puede_PoseerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $puede_poseer = Puede_Poseer::find($id);
+        $puede_poseer->delete();
+        return redirect('/puede_poseers');
     }
 }

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Estado;
 
 class EstadoController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class EstadoController extends Controller
      */
     public function index()
     {
-        //
+        $estados = Estado::all();
+        return view('estado.index')->with('estados', $estados);
     }
 
     /**
@@ -23,7 +28,7 @@ class EstadoController extends Controller
      */
     public function create()
     {
-        //
+        return view('estado.create');
     }
 
     /**
@@ -34,7 +39,14 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $estados = new Estado();
+
+        $estados->situacion = $request->get('situacion');
+        $estados->observacion = $request->get('observacion');
+
+        $estados->save();
+
+        return redirect('/estados');
     }
 
     /**
@@ -56,7 +68,8 @@ class EstadoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estado = Estado::find($id);
+        return view('estado.edit')->with('estado', $estado);
     }
 
     /**
@@ -68,7 +81,14 @@ class EstadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $estado = Estado::find($id);
+
+        $estado->situacion = $request->get('situacion');
+        $estado->observacion = $request->get('observacion');
+
+        $estado->save();
+
+        return redirect('/estados');
     }
 
     /**
@@ -79,6 +99,8 @@ class EstadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $estado = Estado::find($id);
+        $estado->delete();
+        return redirect('/estados');
     }
 }

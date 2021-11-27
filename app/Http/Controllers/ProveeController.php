@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Provee;
 
 class ProveeController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class ProveeController extends Controller
      */
     public function index()
     {
-        //
+        $provees = Provee::all();
+        return view('provee.index')->with('provees', $provees);
     }
 
     /**
@@ -23,7 +28,7 @@ class ProveeController extends Controller
      */
     public function create()
     {
-        //
+        return view('provee.create');
     }
 
     /**
@@ -34,7 +39,15 @@ class ProveeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $provees = new Provee();
+
+        $provees->fecha = $request->get('fecha');
+        $provees->precio = $request->get('precio');
+        $provees->forma_pago = $request->get('forma_pago');
+
+        $provees->save();
+
+        return redirect('/provees');
     }
 
     /**
@@ -56,7 +69,8 @@ class ProveeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $provee = Provee::find($id);
+        return view('provee.edit')->with('provee', $provee);
     }
 
     /**
@@ -68,7 +82,15 @@ class ProveeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $provee = Provee::find($id);
+
+        $provee->fecha = $request->get('fecha');
+        $provee->precio = $request->get('precio');
+        $provee->forma_pago = $request->get('forma_pago');
+
+        $provee->save();
+
+        return redirect('/provees');
     }
 
     /**
@@ -79,6 +101,8 @@ class ProveeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $provee = Provee::find($id);
+        $provee->delete();
+        return redirect('/provees');
     }
 }

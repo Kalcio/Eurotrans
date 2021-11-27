@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tipo;
 
 class TipoController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class TipoController extends Controller
      */
     public function index()
     {
-        //
+        $tipos = Tipo::all();
+        return view('tipo.index')->with('tipos', $tipos);
     }
 
     /**
@@ -23,7 +28,7 @@ class TipoController extends Controller
      */
     public function create()
     {
-        //
+        return view('tipo.create');
     }
 
     /**
@@ -34,7 +39,13 @@ class TipoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipos = new Tipo();
+
+        $tipos->clasificacion = $request->get('clasificacion');
+
+        $tipos->save();
+
+        return redirect('/tipos');
     }
 
     /**
@@ -56,7 +67,8 @@ class TipoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipo = Tipo::find($id);
+        return view('tipo.edit')->with('tipo', $tipo);
     }
 
     /**
@@ -68,7 +80,13 @@ class TipoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tipo = Tipo::find($id);
+
+        $tipo->clasificacion = $request->get('clasificacion');
+
+        $tipo->save();
+
+        return redirect('/tipos');
     }
 
     /**
@@ -79,6 +97,8 @@ class TipoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tipo = Tipo::find($id);
+        $tipo->delete();
+        return redirect('/tipos');
     }
 }

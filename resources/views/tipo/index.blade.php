@@ -1,36 +1,30 @@
 @extends('adminlte::page')
 
-@section('title', 'Clientes')
+@section('title', 'Tipo')
 
 @section('content_header')
-    <h1>Listado Clientes</h1>
+    <h1>Listado Tipo</h1>
 @stop
 
 @section('content')
-<a href="clientes/create" class="btn btn-primary mb-3">CREAR</a>
+<a href="tipos/create" class="btn btn-primary mb-3">CREAR</a>
 
-<table id="clientes" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+<table id="tipos" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Número de contacto</th>
-            <th scope="col">Email</th>
-            <th scope="col">Dirección</th>
+            <th scope="col">Clasificacion</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($clientes as $cliente)
+        @foreach ($tipos as $tipo)
         <tr>
-            <td>{{$cliente->id}}</td>
-            <td>{{$cliente->nombre}}</td>
-            <td>{{$cliente->numero}}</td>
-            <td>{{$cliente->email}}</td>
-            <td>{{$cliente->direccion}}</td>
+            <td>{{$tipo->id}}</td>
+            <td>{{$tipo->clasificacion}}</td>
             <td>
-                <form action="{{route('clientes.destroy', $cliente->id)}}" method="POST">
-                    <a href="/clientes/{{$cliente->id}}/edit" class="btn btn-info">Editar</a>
+                <form action="{{route('tipos.destroy', $tipo->id)}}" method="POST">
+                    <a href="/tipos/{{$tipo->id}}/edit" class="btn btn-info">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Borrar</button>
@@ -67,7 +61,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#clientes').DataTable({
+    $('#tipos').DataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json"
         },

@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Ruta;
 
 class RutaController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class RutaController extends Controller
      */
     public function index()
     {
-        //
+        $rutas = Ruta::all();
+        return view('ruta.index')->with('rutas', $rutas);
     }
 
     /**
@@ -23,7 +28,7 @@ class RutaController extends Controller
      */
     public function create()
     {
-        //
+        return view('ruta.create');
     }
 
     /**
@@ -34,7 +39,14 @@ class RutaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rutas = new Ruta();
+
+        $rutas->origen = $request->get('origen');
+        $rutas->destino = $request->get('destino');
+
+        $rutas->save();
+
+        return redirect('/rutas');
     }
 
     /**
@@ -56,7 +68,8 @@ class RutaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ruta = Ruta::find($id);
+        return view('ruta.edit')->with('ruta', $ruta);
     }
 
     /**
@@ -68,7 +81,14 @@ class RutaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ruta = Ruta::find($id);
+
+        $ruta->origen = $request->get('origen');
+        $ruta->destino = $request->get('destino');
+
+        $ruta->save();
+
+        return redirect('/rutas');
     }
 
     /**
@@ -79,6 +99,8 @@ class RutaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $ruta = Ruta::find($id);
+        $ruta->delete();
+        return redirect('/rutas');
     }
 }
