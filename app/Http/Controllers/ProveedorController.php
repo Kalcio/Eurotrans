@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Proveedor;
 
 class ProveedorController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        //
+        $proveedors = Proveedor::all();
+        return view('proveedor.index')->with('proveedors', $proveedors);
     }
 
     /**
@@ -23,7 +28,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('proveedor.create');
     }
 
     /**
@@ -34,7 +39,16 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proveedors = new Proveedor();
+
+        $proveedors->nombre = $request->get('nombre');
+        $proveedors->numero = $request->get('numero');
+        $proveedors->email = $request->get('email');
+        $proveedors->direccion = $request->get('direccion');
+
+        $proveedors->save();
+
+        return redirect('/proveedors');
     }
 
     /**
@@ -56,7 +70,8 @@ class ProveedorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proveedor = Proveedor::find($id);
+        return view('proveedor.edit')->with('proveedor', $proveedor);
     }
 
     /**
@@ -68,7 +83,16 @@ class ProveedorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proveedor = Proveedor::find($id);
+
+        $proveedor->nombre = $request->get('nombre');
+        $proveedor->numero = $request->get('numero');
+        $proveedor->email = $request->get('email');
+        $proveedor->direccion = $request->get('direccion');
+
+        $proveedor->save();
+
+        return redirect('/proveedors');
     }
 
     /**
@@ -79,6 +103,8 @@ class ProveedorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $proveedor = Proveedor::find($id);
+        $proveedor->delete();
+        return redirect('/proveedors');
     }
 }
