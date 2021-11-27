@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Agente;
 
 class AgenteController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class AgenteController extends Controller
      */
     public function index()
     {
-        //
+        $agentes = Agente::all();
+        return view('agente.index')->with('agentes', $agentes);
     }
 
     /**
@@ -23,7 +28,7 @@ class AgenteController extends Controller
      */
     public function create()
     {
-        //
+        return view('agente.create');
     }
 
     /**
@@ -34,7 +39,16 @@ class AgenteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $agentes = new Agente();
+
+        $agentes->nombre = $request->get('nombre');
+        $agentes->numero = $request->get('numero');
+        $agentes->email = $request->get('email');
+        $agentes->direccion = $request->get('direccion');
+
+        $agentes->save();
+
+        return redirect('/agentes');
     }
 
     /**
@@ -56,7 +70,8 @@ class AgenteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $agente = Agente::find($id);
+        return view('agente.edit')->with('agente', $agente);
     }
 
     /**
@@ -68,7 +83,16 @@ class AgenteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $agente = Agente::find($id);
+
+        $agente->nombre = $request->get('nombre');
+        $agente->numero = $request->get('numero');
+        $agente->email = $request->get('email');
+        $agente->direccion = $request->get('direccion');
+
+        $agente->save();
+
+        return redirect('/agentes');
     }
 
     /**
@@ -79,6 +103,8 @@ class AgenteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $agente = Agente::find($id);
+        $agente->delete();
+        return redirect('/agentes');
     }
 }
