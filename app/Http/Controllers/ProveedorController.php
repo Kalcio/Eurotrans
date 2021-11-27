@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal;
+use App\Models\Proveedor;
 
-class SucursalController extends Controller
+class ProveedorController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -17,8 +17,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        $sucursals = Sucursal::all();
-        return view('sucursal.index')->with('sucursals', $sucursals);
+        $proveedors = Proveedor::all();
+        return view('proveedor.index')->with('proveedors', $proveedors);
     }
 
     /**
@@ -28,7 +28,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        return view('sucursal.create');
+        return view('proveedor.create');
     }
 
     /**
@@ -39,14 +39,16 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        $sucursals = new Sucursal();
+        $proveedors = new Proveedor();
 
-        $sucursals->numero = $request->get('numero');
-        $sucursals->direccion = $request->get('direccion');
+        $proveedors->nombre = $request->get('nombre');
+        $proveedors->numero = $request->get('numero');
+        $proveedors->email = $request->get('email');
+        $proveedors->direccion = $request->get('direccion');
 
-        $sucursals->save();
+        $proveedors->save();
 
-        return redirect('/sucursals');
+        return redirect('/proveedors');
     }
 
     /**
@@ -68,8 +70,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        $sucursal = Sucursal::find($id);
-        return view('sucursal.edit')->with('sucursal', $sucursal);
+        $proveedor = Proveedor::find($id);
+        return view('proveedor.edit')->with('proveedor', $proveedor);
     }
 
     /**
@@ -81,14 +83,16 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sucursal = Sucursal::find($id);
+        $proveedor = Proveedor::find($id);
 
-        $sucursal->numero = $request->get('numero');
-        $sucursal->direccion = $request->get('direccion');
+        $proveedor->nombre = $request->get('nombre');
+        $proveedor->numero = $request->get('numero');
+        $proveedor->email = $request->get('email');
+        $proveedor->direccion = $request->get('direccion');
 
-        $sucursal->save();
+        $proveedor->save();
 
-        return redirect('/sucursals');
+        return redirect('/proveedors');
     }
 
     /**
@@ -99,9 +103,8 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        $sucursal = Sucursal::find($id);
-        $sucursal->delete();
-        return redirect('/sucursals');
+        $proveedor = Proveedor::find($id);
+        $proveedor->delete();
+        return redirect('/proveedors');
     }
 }
-

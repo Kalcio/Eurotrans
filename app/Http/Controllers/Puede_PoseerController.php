@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal;
+use App\Models\Puede_Poseer;
 
-class SucursalController extends Controller
+class Puede_PoseerController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -17,8 +17,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        $sucursals = Sucursal::all();
-        return view('sucursal.index')->with('sucursals', $sucursals);
+        $puede_poseers = Puede_Poseer::all();
+        return view('puede_poseer.index')->with('puede_poseers', $puede_poseers);
     }
 
     /**
@@ -28,7 +28,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        return view('sucursal.create');
+        return view('puede_poseer.create');
     }
 
     /**
@@ -39,14 +39,13 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        $sucursals = new Sucursal();
+        $puede_poseers = new Puede_Poseer();
 
-        $sucursals->numero = $request->get('numero');
-        $sucursals->direccion = $request->get('direccion');
+        $puede_poseers->estado = $request->get('estado');
 
-        $sucursals->save();
+        $puede_poseers->save();
 
-        return redirect('/sucursals');
+        return redirect('/puede_poseers');
     }
 
     /**
@@ -68,8 +67,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        $sucursal = Sucursal::find($id);
-        return view('sucursal.edit')->with('sucursal', $sucursal);
+        $puede_poseer = Puede_Poseer::find($id);
+        return view('puede_poseer.edit')->with('puede_poseer', $puede_poseer);
     }
 
     /**
@@ -81,14 +80,13 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sucursal = Sucursal::find($id);
+        $puede_poseer = Puede_Poseer::find($id);
 
-        $sucursal->numero = $request->get('numero');
-        $sucursal->direccion = $request->get('direccion');
+        $puede_poseer->estado = $request->get('estado');
 
-        $sucursal->save();
+        $puede_poseer->save();
 
-        return redirect('/sucursals');
+        return redirect('/puede_poseers');
     }
 
     /**
@@ -99,9 +97,8 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        $sucursal = Sucursal::find($id);
-        $sucursal->delete();
-        return redirect('/sucursals');
+        $puede_poseer = Puede_Poseer::find($id);
+        $puede_poseer->delete();
+        return redirect('/puede_poseers');
     }
 }
-

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal;
+use App\Models\Tipo;
 
-class SucursalController extends Controller
+class TipoController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -17,8 +17,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        $sucursals = Sucursal::all();
-        return view('sucursal.index')->with('sucursals', $sucursals);
+        $tipos = Tipo::all();
+        return view('tipo.index')->with('tipos', $tipos);
     }
 
     /**
@@ -28,7 +28,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        return view('sucursal.create');
+        return view('tipo.create');
     }
 
     /**
@@ -39,14 +39,13 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        $sucursals = new Sucursal();
+        $tipos = new Tipo();
 
-        $sucursals->numero = $request->get('numero');
-        $sucursals->direccion = $request->get('direccion');
+        $tipos->clasificacion = $request->get('clasificacion');
 
-        $sucursals->save();
+        $tipos->save();
 
-        return redirect('/sucursals');
+        return redirect('/tipos');
     }
 
     /**
@@ -68,8 +67,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        $sucursal = Sucursal::find($id);
-        return view('sucursal.edit')->with('sucursal', $sucursal);
+        $tipo = Tipo::find($id);
+        return view('tipo.edit')->with('tipo', $tipo);
     }
 
     /**
@@ -81,14 +80,13 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sucursal = Sucursal::find($id);
+        $tipo = Tipo::find($id);
 
-        $sucursal->numero = $request->get('numero');
-        $sucursal->direccion = $request->get('direccion');
+        $tipo->clasificacion = $request->get('clasificacion');
 
-        $sucursal->save();
+        $tipo->save();
 
-        return redirect('/sucursals');
+        return redirect('/tipos');
     }
 
     /**
@@ -99,9 +97,8 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        $sucursal = Sucursal::find($id);
-        $sucursal->delete();
-        return redirect('/sucursals');
+        $tipo = Tipo::find($id);
+        $tipo->delete();
+        return redirect('/tipos');
     }
 }
-

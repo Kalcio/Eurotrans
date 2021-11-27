@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal;
+use App\Models\Provee;
 
-class SucursalController extends Controller
+class ProveeController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -17,8 +17,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        $sucursals = Sucursal::all();
-        return view('sucursal.index')->with('sucursals', $sucursals);
+        $provees = Provee::all();
+        return view('provee.index')->with('provees', $provees);
     }
 
     /**
@@ -28,7 +28,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        return view('sucursal.create');
+        return view('provee.create');
     }
 
     /**
@@ -39,14 +39,15 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        $sucursals = new Sucursal();
+        $provees = new Provee();
 
-        $sucursals->numero = $request->get('numero');
-        $sucursals->direccion = $request->get('direccion');
+        $provees->fecha = $request->get('fecha');
+        $provees->precio = $request->get('precio');
+        $provees->forma_pago = $request->get('forma_pago');
 
-        $sucursals->save();
+        $provees->save();
 
-        return redirect('/sucursals');
+        return redirect('/provees');
     }
 
     /**
@@ -68,8 +69,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        $sucursal = Sucursal::find($id);
-        return view('sucursal.edit')->with('sucursal', $sucursal);
+        $provee = Provee::find($id);
+        return view('provee.edit')->with('provee', $provee);
     }
 
     /**
@@ -81,14 +82,15 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sucursal = Sucursal::find($id);
+        $provee = Provee::find($id);
 
-        $sucursal->numero = $request->get('numero');
-        $sucursal->direccion = $request->get('direccion');
+        $provee->fecha = $request->get('fecha');
+        $provee->precio = $request->get('precio');
+        $provee->forma_pago = $request->get('forma_pago');
 
-        $sucursal->save();
+        $provee->save();
 
-        return redirect('/sucursals');
+        return redirect('/provees');
     }
 
     /**
@@ -99,9 +101,8 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        $sucursal = Sucursal::find($id);
-        $sucursal->delete();
-        return redirect('/sucursals');
+        $provee = Provee::find($id);
+        $provee->delete();
+        return redirect('/provees');
     }
 }
-

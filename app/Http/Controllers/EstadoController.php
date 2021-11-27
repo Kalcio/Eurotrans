@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal;
+use App\Models\Estado;
 
-class SucursalController extends Controller
+class EstadoController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -17,8 +17,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        $sucursals = Sucursal::all();
-        return view('sucursal.index')->with('sucursals', $sucursals);
+        $estados = Estado::all();
+        return view('estado.index')->with('estados', $estados);
     }
 
     /**
@@ -28,7 +28,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        return view('sucursal.create');
+        return view('estado.create');
     }
 
     /**
@@ -39,14 +39,14 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        $sucursals = new Sucursal();
+        $estados = new Estado();
 
-        $sucursals->numero = $request->get('numero');
-        $sucursals->direccion = $request->get('direccion');
+        $estados->situacion = $request->get('situacion');
+        $estados->observacion = $request->get('observacion');
 
-        $sucursals->save();
+        $estados->save();
 
-        return redirect('/sucursals');
+        return redirect('/estados');
     }
 
     /**
@@ -68,8 +68,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        $sucursal = Sucursal::find($id);
-        return view('sucursal.edit')->with('sucursal', $sucursal);
+        $estado = Estado::find($id);
+        return view('estado.edit')->with('estado', $estado);
     }
 
     /**
@@ -81,14 +81,14 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sucursal = Sucursal::find($id);
+        $estado = Estado::find($id);
 
-        $sucursal->numero = $request->get('numero');
-        $sucursal->direccion = $request->get('direccion');
+        $estado->situacion = $request->get('situacion');
+        $estado->observacion = $request->get('observacion');
 
-        $sucursal->save();
+        $estado->save();
 
-        return redirect('/sucursals');
+        return redirect('/estados');
     }
 
     /**
@@ -99,9 +99,8 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        $sucursal = Sucursal::find($id);
-        $sucursal->delete();
-        return redirect('/sucursals');
+        $estado = Estado::find($id);
+        $estado->delete();
+        return redirect('/estados');
     }
 }
-

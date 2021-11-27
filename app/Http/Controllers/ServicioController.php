@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal;
+use App\Models\Servicio;
 
-class SucursalController extends Controller
+class ServicioController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -17,8 +17,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        $sucursals = Sucursal::all();
-        return view('sucursal.index')->with('sucursals', $sucursals);
+        $servicios = Servicio::all();
+        return view('servicio.index')->with('servicios', $servicios);
     }
 
     /**
@@ -28,7 +28,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        return view('sucursal.create');
+        return view('servicio.create');
     }
 
     /**
@@ -39,14 +39,15 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        $sucursals = new Sucursal();
+        $servicios = new Servicio();
 
-        $sucursals->numero = $request->get('numero');
-        $sucursals->direccion = $request->get('direccion');
+        $servicios->carga = $request->get('carga');
+        $servicios->seguro = $request->get('seguro');
+        $servicios->observaciones = $request->get('observaciones');
 
-        $sucursals->save();
+        $servicios->save();
 
-        return redirect('/sucursals');
+        return redirect('/servicios');
     }
 
     /**
@@ -68,8 +69,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        $sucursal = Sucursal::find($id);
-        return view('sucursal.edit')->with('sucursal', $sucursal);
+        $servicio = Servicio::find($id);
+        return view('servicio.edit')->with('servicio', $servicio);
     }
 
     /**
@@ -81,14 +82,15 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sucursal = Sucursal::find($id);
+        $servicio = Servicio::find($id);
 
-        $sucursal->numero = $request->get('numero');
-        $sucursal->direccion = $request->get('direccion');
+        $servicio->carga = $request->get('carga');
+        $servicio->seguro = $request->get('seguro');
+        $servicio->observaciones = $request->get('observaciones');
 
-        $sucursal->save();
+        $servicio->save();
 
-        return redirect('/sucursals');
+        return redirect('/servicios');
     }
 
     /**
@@ -99,9 +101,8 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        $sucursal = Sucursal::find($id);
-        $sucursal->delete();
-        return redirect('/sucursals');
+        $servicio = Servicio::find($id);
+        $servicio->delete();
+        return redirect('/servicios');
     }
 }
-

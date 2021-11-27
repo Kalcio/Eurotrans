@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal;
+use App\Models\Ruta;
 
-class SucursalController extends Controller
+class RutaController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -17,8 +17,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        $sucursals = Sucursal::all();
-        return view('sucursal.index')->with('sucursals', $sucursals);
+        $rutas = Ruta::all();
+        return view('ruta.index')->with('rutas', $rutas);
     }
 
     /**
@@ -28,7 +28,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        return view('sucursal.create');
+        return view('ruta.create');
     }
 
     /**
@@ -39,14 +39,14 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        $sucursals = new Sucursal();
+        $rutas = new Ruta();
 
-        $sucursals->numero = $request->get('numero');
-        $sucursals->direccion = $request->get('direccion');
+        $rutas->origen = $request->get('origen');
+        $rutas->destino = $request->get('destino');
 
-        $sucursals->save();
+        $rutas->save();
 
-        return redirect('/sucursals');
+        return redirect('/rutas');
     }
 
     /**
@@ -68,8 +68,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        $sucursal = Sucursal::find($id);
-        return view('sucursal.edit')->with('sucursal', $sucursal);
+        $ruta = Ruta::find($id);
+        return view('ruta.edit')->with('ruta', $ruta);
     }
 
     /**
@@ -81,14 +81,14 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sucursal = Sucursal::find($id);
+        $ruta = Ruta::find($id);
 
-        $sucursal->numero = $request->get('numero');
-        $sucursal->direccion = $request->get('direccion');
+        $ruta->origen = $request->get('origen');
+        $ruta->destino = $request->get('destino');
 
-        $sucursal->save();
+        $ruta->save();
 
-        return redirect('/sucursals');
+        return redirect('/rutas');
     }
 
     /**
@@ -99,9 +99,8 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        $sucursal = Sucursal::find($id);
-        $sucursal->delete();
-        return redirect('/sucursals');
+        $ruta = Ruta::find($id);
+        $ruta->delete();
+        return redirect('/rutas');
     }
 }
-

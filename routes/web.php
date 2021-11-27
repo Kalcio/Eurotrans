@@ -17,7 +17,19 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+//Ruta Tablas
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
+Route::resource('sucursals', 'App\Http\Controllers\SucursalController');
+Route::resource('empleados', 'App\Http\Controllers\EmpleadoController');
+Route::resource('provees', 'App\Http\Controllers\ProveeController');
+Route::resource('servicios', 'App\Http\Controllers\ServicioController');
+Route::resource('tipos', 'App\Http\Controllers\TipoController');
+Route::resource('rutas', 'App\Http\Controllers\RutaController');
+Route::resource('agentes', 'App\Http\Controllers\AgenteController');
+Route::resource('puede_poseers', 'App\Http\Controllers\Puede_PoseerController');
+Route::resource('proveedors', 'App\Http\Controllers\ProveedorController');
+Route::resource('estados', 'App\Http\Controllers\EstadoController');
+Route::resource('incoterms', 'App\Http\Controllers\IncotermController');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dash', function () {
     return view('dash.index');

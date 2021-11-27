@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Sucursal;
+use App\Models\Agente;
 
-class SucursalController extends Controller
+class AgenteController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -17,8 +17,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        $sucursals = Sucursal::all();
-        return view('sucursal.index')->with('sucursals', $sucursals);
+        $agentes = Agente::all();
+        return view('agente.index')->with('agentes', $agentes);
     }
 
     /**
@@ -28,7 +28,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        return view('sucursal.create');
+        return view('agente.create');
     }
 
     /**
@@ -39,14 +39,16 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        $sucursals = new Sucursal();
+        $agentes = new Agente();
 
-        $sucursals->numero = $request->get('numero');
-        $sucursals->direccion = $request->get('direccion');
+        $agentes->nombre = $request->get('nombre');
+        $agentes->numero = $request->get('numero');
+        $agentes->email = $request->get('email');
+        $agentes->direccion = $request->get('direccion');
 
-        $sucursals->save();
+        $agentes->save();
 
-        return redirect('/sucursals');
+        return redirect('/agentes');
     }
 
     /**
@@ -68,8 +70,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        $sucursal = Sucursal::find($id);
-        return view('sucursal.edit')->with('sucursal', $sucursal);
+        $agente = Agente::find($id);
+        return view('agente.edit')->with('agente', $agente);
     }
 
     /**
@@ -81,14 +83,16 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sucursal = Sucursal::find($id);
+        $agente = Agente::find($id);
 
-        $sucursal->numero = $request->get('numero');
-        $sucursal->direccion = $request->get('direccion');
+        $agente->nombre = $request->get('nombre');
+        $agente->numero = $request->get('numero');
+        $agente->email = $request->get('email');
+        $agente->direccion = $request->get('direccion');
 
-        $sucursal->save();
+        $agente->save();
 
-        return redirect('/sucursals');
+        return redirect('/agentes');
     }
 
     /**
@@ -99,9 +103,8 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        $sucursal = Sucursal::find($id);
-        $sucursal->delete();
-        return redirect('/sucursals');
+        $agente = Agente::find($id);
+        $agente->delete();
+        return redirect('/agentes');
     }
 }
-
