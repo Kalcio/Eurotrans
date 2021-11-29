@@ -107,4 +107,10 @@ class ProveedorController extends Controller
         $proveedor->delete();
         return redirect('/proveedors');
     }
+
+    public function contar()
+    {
+        $count = Proveedor::count();
+        return $count;
+    }
 }

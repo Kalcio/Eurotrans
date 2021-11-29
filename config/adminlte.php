@@ -46,8 +46,8 @@ return [
     */
 
     'logo' => '<b>EURO</b>TRANS',
-    'logo_img' => 'vendor/adminlte/dist/img/LogoTrasparente.png',
-    'logo_img_class' => 'img-circle',
+    'logo_img' => 'vendor/adminlte/dist/img/LogoTrasparente_Small.png',
+    'logo_img_class' => '',
     'logo_img_xl' => 'vendor/adminlte/dist/img/Logobig_white.png',
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'AdminLTE',
@@ -252,6 +252,15 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'CRUD',
             'label_color' => 'warning',
+            'icon' => 'fas fa-fw fa-cubes',
+        ],
+        [
+            'text'        => 'Empleados',
+            'url'         => 'empleados',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 'CRUD',
+            'label_color' => 'warning',
+            'icon' => 'fas fa-fw fa-users',
         ],
         [
             'text'        => 'Sucursals',
@@ -329,12 +338,12 @@ return [
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
+        /*[
+        //     'text' => 'change_password',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],*/
+        /*[
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -371,7 +380,8 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
+        ],*/
+        /*
         ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -387,7 +397,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*

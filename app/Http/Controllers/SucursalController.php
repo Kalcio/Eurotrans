@@ -103,5 +103,11 @@ class SucursalController extends Controller
         $sucursal->delete();
         return redirect('/sucursals');
     }
+
+    public function contar()
+    {
+        $count = Sucursal::count();
+        return $count;
+    }
 }
 
