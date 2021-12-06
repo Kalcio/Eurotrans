@@ -11,7 +11,7 @@
 <form action="/users" method="POST">
     @csrf
     <div class="mb-3">
-        <label for="" class="form-label">RUT</label>
+        <label for="rut" class="form-label">RUT</label>
         <input id="rut" name="rut" type="text" class="form-control" tabindex="1">
     </div>
     <div class="mb-3">
@@ -37,10 +37,6 @@
     <div class="mb-3">
         <label for="password_confirmation" class="form-label">Contraseña</label>
         <input id="password_confirmation" name="password_confirmation" type="password" class="form-control" tabindex="7">
-    </div>
-    <div class="mb-3">
-        <label for="" class="form-label">Número de contacto</label>
-        <input id="numero" name="numero" type="tel" class="form-control" tabindex="8">
     </div>
     <a href="/clientes" class="btn btn-secondary" tabindex="9">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="10">Guardar</button>
