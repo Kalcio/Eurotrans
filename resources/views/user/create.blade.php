@@ -16,22 +16,34 @@
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
-        <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1">
+        <input id="name" name="name" type="text" class="form-control" tabindex="2">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Número de contacto</label>
-        <input id="numero" name="numero" type="tel" class="form-control" tabindex="2">
+        <input id="numero" name="numero" type="tel" class="form-control" tabindex="3">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Correo Electronico</label>
-        <input id="correo" name="correo" type="text" class="form-control" tabindex="3">
+        <input id="email" name="email" type="text" class="form-control" tabindex="4">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Dirección</label>
-        <input id="direccion" name="direccion" type="text" class="form-control" tabindex="4">
+        <input id="direccion" name="direccion" type="text" class="form-control" tabindex="5">
     </div>
-    <a href="/clientes" class="btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
+    <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input id="password" name="password" type="password" class="form-control" required autocomplete="new-password" tabindex="6">
+    </div>
+    <div class="mb-3">
+        <label for="password_confirmation" class="form-label">Contraseña</label>
+        <input id="password_confirmation" name="password_confirmation" type="password" class="form-control" tabindex="7">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Número de contacto</label>
+        <input id="numero" name="numero" type="tel" class="form-control" tabindex="8">
+    </div>
+    <a href="/clientes" class="btn btn-secondary" tabindex="9">Cancelar</a>
+    <button type="submit" class="btn btn-primary" tabindex="10">Guardar</button>
 </form>
 @stop
 

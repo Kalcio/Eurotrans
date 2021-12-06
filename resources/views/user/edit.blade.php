@@ -17,7 +17,7 @@
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
-        <input id="nombre" name="nombre" type="text" class="form-control" value="{{$user->nombre}}">
+        <input id="name" name="name" type="text" class="form-control" value="{{$user->name}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Número de contacto</label>
@@ -25,7 +25,7 @@
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Correo Electronico</label>
-        <input id="correo" name="correo" type="text" class="form-control" value="{{$user->email}}">
+        <input id="email" name="email" type="text" class="form-control" value="{{$user->email}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Dirección</label>
