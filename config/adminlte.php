@@ -228,7 +228,7 @@ return [
         // Navbar items:
         [
             'type'         => 'navbar-search',
-            'text'         => 'search',
+            'text'         => 'Buscar',
             'topnav_right' => false,
         ],
         [
@@ -239,7 +239,7 @@ return [
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Buscar',
         ],
         [
             'text' => 'blog',
@@ -263,75 +263,79 @@ return [
             'icon' => 'fas fa-fw fa-users',
         ],
         [
-            'text'        => 'Sucursals',
+            'text'        => 'Sucursales',
             'url'         => 'sucursals',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'CRUD',
             'label_color' => 'warning',
+            'icon' => 'fas fa-building',
         ],
-        [
-            'text'        => 'Provees',
-            'url'         => 'provees',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'CRUD',
-            'label_color' => 'warning',
-        ],
-        [
-            'text'        => 'Servicios',
-            'url'         => 'servicios',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'CRUD',
-            'label_color' => 'warning',
-        ],
-        [
-            'text'        => 'Tipos',
-            'url'         => 'tipos',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'CRUD',
-            'label_color' => 'warning',
-        ],
-        [
-            'text'        => 'Rutas',
-            'url'         => 'rutas',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'CRUD',
-            'label_color' => 'warning',
-        ],
+        // [
+        //     'text'        => 'Provees',
+        //     'url'         => 'provees',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 'CRUD',
+        //     'label_color' => 'warning',
+        // ],
+        // [
+        //     'text'        => 'Servicios',
+        //     'url'         => 'servicios',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 'CRUD',
+        //     'label_color' => 'warning',
+        // ],
+        // [
+        //     'text'        => 'Tipos',
+        //     'url'         => 'tipos',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 'CRUD',
+        //     'label_color' => 'warning',
+        // ],
+        // [
+        //     'text'        => 'Rutas',
+        //     'url'         => 'rutas',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 'CRUD',
+        //     'label_color' => 'warning',
+        // ],
         [
             'text'        => 'Agentes',
             'url'         => 'agentes',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'CRUD',
             'label_color' => 'warning',
+            'icon' => 'fas fa-user-tie',
         ],
+        // [
+        //     'text'        => 'Puede Poseers',
+        //     'url'         => 'puede_poseers',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 'CRUD',
+        //     'label_color' => 'warning',
+        // ],
         [
-            'text'        => 'Puede Poseers',
-            'url'         => 'puede_poseers',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'CRUD',
-            'label_color' => 'warning',
-        ],
-        [
-            'text'        => 'Proveedors',
+            'text'        => 'Proveedores',
             'url'         => 'proveedors',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'CRUD',
             'label_color' => 'warning',
+            'icon' => 'fas fa-truck-loading'
         ],
         [
-            'text'        => 'Estados',
+            'text'        => 'Estados Envíos',
             'url'         => 'estados',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'CRUD',
             'label_color' => 'warning',
+            'icon' => 'fas fa-exclamation-circle'
         ],
-        [
-            'text'        => 'Incoterms',
-            'url'         => 'incoterms',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'CRUD',
-            'label_color' => 'warning',
-        ],
+        // [
+        //     'text'        => 'Incoterms',
+        //     'url'         => 'incoterms',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 'CRUD',
+        //     'label_color' => 'warning',
+        // ],
         ['header' => 'Configuración de la cuenta'],
         [
             'text' => 'Perfil de usuario',
