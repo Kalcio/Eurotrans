@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
+    use PasswordValidationRules;
+
     public function __construct(){
         $this->middleware('auth');
     }
@@ -41,11 +46,37 @@ class UserController extends Controller
     {
         $users = new User();
 
-        $users->rut = $request->get('rut');
-        $users->nombre = $request->get('name');
-        $users->numero = $request->get('numero');
-        $users->correo = $request->get('email');
-        $users->direccion = $request->get('direccion');
+        $user->$rut = $request->get('rut');
+        $user->$name = $request->get('name');
+        $user->$numero = $request->get('numero');
+        $user->$password = $request->get('password');
+        $user->$email = $request->get('email');
+        $user->$direccion = $request->get('direccion');
+
+        // $validator = Validator::make($request->all(), [
+        //     'rut' => ['required', 'integer', 'max:10', 'unique:rut'],
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'numero' => ['required', 'string', 'max:14'],
+        //     'direccion' => ['required', 'string', 'max:60'],
+        //     'password' => $this->passwordRules(),
+        //     // $terms => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+        // ]);
+
+        // if($validator->fails()) {
+        //     return redirect('post/create')
+        //                 ->withErrors($validator)
+        //                 ->withInput();
+        // }
+        
+        // $validated = $validator->validated();
+
+        // $users->rut = $rut;
+        // $users->name = $name;
+        // $users->numero = $numero;
+        // $users->email = $email;
+        // $users->direccion = $direccion;
+        // $user->password = $password;
 
         $users->save();
 
@@ -86,9 +117,9 @@ class UserController extends Controller
     {
         $user = User::find($rut);
 
-        $user->nombre = $request->get('name');
+        $user->name = $request->get('name');
         $user->numero = $request->get('numero');
-        $user->correo = $request->get('email');
+        $user->email = $request->get('email');
         $user->direccion = $request->get('direccion');
 
         $user->save();
