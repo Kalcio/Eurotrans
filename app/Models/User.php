@@ -18,15 +18,19 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    protected $primaryKey = 'rut';
     /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
     protected $fillable = [
+        'rut',
         'name',
         'email',
         'password',
+        'direccion',
+        'numero',
     ];
 
     /**

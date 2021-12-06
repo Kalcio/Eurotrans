@@ -30,14 +30,14 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>{{App\Models\Empleado::count()}}</h3>
+                        <h3>{{App\Models\User::count()}}</h3>
 
                         <p>Empleados</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-stalker"></i>
                     </div>
-                    <a href="/empleados" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="/users" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
