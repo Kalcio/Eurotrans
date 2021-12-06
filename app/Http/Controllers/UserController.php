@@ -46,12 +46,12 @@ class UserController extends Controller
     {
         $users = new User();
 
-        $user->$rut = $request->get('rut');
-        $user->$name = $request->get('name');
-        $user->$numero = $request->get('numero');
-        $user->$password = $request->get('password');
-        $user->$email = $request->get('email');
-        $user->$direccion = $request->get('direccion');
+        $users->rut = $request->get('rut');
+        $users->name = $request->get('name');
+        $users->numero = $request->get('numero');
+        $users->password = $request->get('password');
+        $users->email = $request->get('email');
+        $users->direccion = $request->get('direccion');
 
         // $validator = Validator::make($request->all(), [
         //     'rut' => ['required', 'integer', 'max:10', 'unique:rut'],
