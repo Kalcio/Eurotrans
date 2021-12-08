@@ -20,7 +20,7 @@ Route::get('/', function () {
 //Ruta Tablas
 Route::resource('clientes', 'App\Http\Controllers\ClienteController');
 Route::resource('sucursals', 'App\Http\Controllers\SucursalController');
-Route::resource('empleados', 'App\Http\Controllers\EmpleadoController');
+Route::resource('users', 'App\Http\Controllers\UserController');
 Route::resource('provees', 'App\Http\Controllers\ProveeController');
 Route::resource('servicios', 'App\Http\Controllers\ServicioController');
 Route::resource('tipos', 'App\Http\Controllers\TipoController');

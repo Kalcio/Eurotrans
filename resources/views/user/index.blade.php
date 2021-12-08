@@ -7,9 +7,9 @@
 @stop
 
 @section('content')
-<a href="empleados/create" class="btn btn-primary mb-3">CREAR</a>
+<a href="users/create" class="btn btn-primary mb-3">CREAR</a>
 
-<table id="empleados" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+<table id="users" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
             <th scope="col">RUT</th>
@@ -21,16 +21,16 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($empleados as $empleado)
+        @foreach ($users as $user)
         <tr>
-            <td>{{$empleado->rut}}</td>
-            <td>{{$empleado->nombre}}</td>
-            <td>{{$empleado->numero}}</td>
-            <td>{{$empleado->correo}}</td>
-            <td>{{$empleado->direccion}}</td>
+            <td>{{$user->rut}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->numero}}</td>
+            <td>{{$user->email}}</td>
+            <td>{{$user->direccion}}</td>
             <td>
-                <form action="{{route('empleados.destroy', $empleado->rut)}}" method="POST">
-                    <a href="/empleados/{{$empleado->rut}}/edit" class="btn btn-info">Editar</a>
+                <form action="{{route('users.destroy', $user->rut)}}" method="POST">
+                    <a href="/users/{{$user->rut}}/edit" class="btn btn-info">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Borrar</button>
@@ -67,7 +67,7 @@
 
 <script>
 $(document).ready(function() {
-    $('#empleados').DataTable({
+    $('#users').DataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.11.3/i18n/es-cl.json"
         },

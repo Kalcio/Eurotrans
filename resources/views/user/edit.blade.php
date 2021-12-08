@@ -8,30 +8,30 @@
 
 @section('content')
     
-<form action="/empleados/{{$empleado->rut}}" method="POST">
+<form action="/users/{{$user->rut}}" method="POST">
     @csrf
     @method('PUT')
     <div class="mb-3">
         <label for="" class="form-label">RUT</label>
-        <input id="rut" name="rut" type="text" class="form-control" value="{{$empleado->rut}}">
+        <input id="rut" name="rut" type="text" class="form-control" value="{{$user->rut}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
-        <input id="nombre" name="nombre" type="text" class="form-control" value="{{$empleado->nombre}}">
+        <input id="name" name="name" type="text" class="form-control" value="{{$user->name}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Número de contacto</label>
-        <input id="numero" name="numero" type="tel" class="form-control" value="{{$empleado->numero}}">
+        <input id="numero" name="numero" type="tel" class="form-control" value="{{$user->numero}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Correo Electronico</label>
-        <input id="correo" name="correo" type="text" class="form-control" value="{{$empleado->email}}">
+        <input id="email" name="email" type="text" class="form-control" value="{{$user->email}}">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Dirección</label>
-        <input id="direccion" name="direccion" type="text" class="form-control" value="{{$empleado->direccion}}">
+        <input id="direccion" name="direccion" type="text" class="form-control" value="{{$user->direccion}}">
     </div>
-    <a href="/empleados" class="btn btn-secondary" tabindex="5">Cancelar</a>
+    <a href="/users" class="btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
 </form>
 @stop

@@ -256,7 +256,7 @@ return [
         ],
         [
             'text'        => 'Empleados',
-            'url'         => 'empleados',
+            'url'         => 'users',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'CRUD',
             'label_color' => 'warning',
