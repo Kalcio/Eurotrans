@@ -44,6 +44,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'rut'=>'required|min:8|max:9',
+            'name'=>'required',
+            'numero'=>'required|min:5|max:15',
+            'password'=>'required|min:5|max:15',
+            'email'=>'required|email',
+            'direccion' => 'required',
+        ]);
+
         $users = new User();
 
         $users->rut = $request->get('rut');
@@ -52,31 +61,6 @@ class UserController extends Controller
         $users->password = $request->get('password');
         $users->email = $request->get('email');
         $users->direccion = $request->get('direccion');
-
-        // $validator = Validator::make($request->all(), [
-        //     'rut' => ['required', 'integer', 'max:10', 'unique:rut'],
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'numero' => ['required', 'string', 'max:14'],
-        //     'direccion' => ['required', 'string', 'max:60'],
-        //     'password' => $this->passwordRules(),
-        //     // $terms => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
-        // ]);
-
-        // if($validator->fails()) {
-        //     return redirect('post/create')
-        //                 ->withErrors($validator)
-        //                 ->withInput();
-        // }
-        
-        // $validated = $validator->validated();
-
-        // $users->rut = $rut;
-        // $users->name = $name;
-        // $users->numero = $numero;
-        // $users->email = $email;
-        // $users->direccion = $direccion;
-        // $user->password = $password;
 
         $users->save();
 
@@ -115,6 +99,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $rut)
     {
+        $request->validate([
+            'rut'=>'required|min:8|max:9',
+            'name'=>'required',
+            'numero'=>'required|min:5|max:15',
+            'email'=>'required|email',
+            'direccion' => 'required',
+        ]);
+
         $user = User::find($rut);
 
         $user->name = $request->get('name');
@@ -124,7 +116,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/users');
+        return redirect('/dash');
     }
 
     /**
