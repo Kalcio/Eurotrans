@@ -14,14 +14,23 @@
     <div class="mb-3">
         <label for="" class="form-label">Carga</label>
         <input id="carga" name="carga" type="text" class="form-control" value="{{$servicio->carga}}">
+        @if ($errors->has('carga'))
+            <span class="error text-danger" for="input-carga">{{ $errors->first('carga')}}</span>
+        @endif
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Seguro</label>
         <input id="seguro" name="seguro" type="tel" class="form-control" value="{{$servicio->seguro}}">
+        @if ($errors->has('seguro'))
+            <span class="error text-danger" for="input-seguro">{{ $errors->first('seguro')}}</span>
+        @endif
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Observaciones</label>
         <input id="observaciones" name="observaciones" type="text" class="form-control" value="{{$servicio->observaciones}}">
+        @if ($errors->has('observaciones'))
+            <span class="error text-danger" for="input-observaciones">{{ $errors->first('observaciones')}}</span>
+        @endif
     </div>
     <a href="/servicios" class="btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
