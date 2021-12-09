@@ -39,6 +39,12 @@ class ProveeController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'fecha'=>'required|date_format:d/m/Y',
+            'precio'=>'required|numeric',
+            'forma_pago'=>'required',
+        ]);
+
         $provees = new Provee();
 
         $provees->fecha = $request->get('fecha');
@@ -82,6 +88,12 @@ class ProveeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'fecha'=>'required|date_format:d/m/Y',
+            'precio'=>'required|numeric',
+            'forma_pago'=>'required',
+        ]);
+
         $provee = Provee::find($id);
 
         $provee->fecha = $request->get('fecha');
