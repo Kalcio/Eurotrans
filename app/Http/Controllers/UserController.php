@@ -116,7 +116,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('/dash');
+        return redirect('/users');
     }
 
     /**
