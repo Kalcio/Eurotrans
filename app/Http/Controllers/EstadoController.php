@@ -39,6 +39,11 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'situacion'=>'required',
+            'observacion'=>'required',
+        ]);
+
         $estados = new Estado();
 
         $estados->situacion = $request->get('situacion');
@@ -81,6 +86,11 @@ class EstadoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'situacion'=>'required',
+            'observacion'=>'required',
+        ]);
+
         $estado = Estado::find($id);
 
         $estado->situacion = $request->get('situacion');
