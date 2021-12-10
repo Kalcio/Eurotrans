@@ -12,19 +12,31 @@
     @csrf
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
-        <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1">
+        <input id="nombre" name="nombre" type="text" class="form-control" tabindex="1" value="{{old('nombre')}}" autofocus>
+        @if ($errors->has('nombre'))
+            <span class="error text-danger" for="input-nombre">{{ $errors->first('nombre')}}</span>
+        @endif
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Número de contacto</label>
-        <input id="numero" name="numero" type="tel" class="form-control" tabindex="2">
+        <input id="numero" name="numero" type="tel" class="form-control" tabindex="2" value="{{old('numero')}}" autofocus>
+        @if ($errors->has('numero'))
+            <span class="error text-danger" for="input-numero">{{ $errors->first('numero')}}</span>
+        @endif
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Correo Electronico</label>
-        <input id="email" name="email" type="text" class="form-control" tabindex="3">
+        <input id="email" name="email" type="text" class="form-control" tabindex="3" value="{{old('email')}}" autofocus>
+        @if ($errors->has('email'))
+            <span class="error text-danger" for="input-email">{{ $errors->first('email')}}</span>
+        @endif
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Dirección</label>
-        <input id="direccion" name="direccion" type="text" class="form-control" tabindex="4">
+        <input id="direccion" name="direccion" type="text" class="form-control" tabindex="4" value="{{old('direccion')}}" autofocus>
+        @if ($errors->has('direccion'))
+            <span class="error text-danger" for="input-direccion">{{ $errors->first('direccion')}}</span>
+        @endif
     </div>
     <a href="/proveedors" class="btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
