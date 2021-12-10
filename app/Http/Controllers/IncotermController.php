@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Incoterm;
 
 class IncotermController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +17,8 @@ class IncotermController extends Controller
      */
     public function index()
     {
-        //
+        $incoterms = Incoterm::all();
+        return view('incoterm.index')->with('incoterms', $incoterms);
     }
 
     /**
@@ -23,7 +28,7 @@ class IncotermController extends Controller
      */
     public function create()
     {
-        //
+        return view('incoterm.create');
     }
 
     /**
@@ -34,7 +39,17 @@ class IncotermController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'clasificacion'=>'required',
+        ]);
+
+        $incoterms = new Incoterm();
+
+        $incoterms->clasificacion = $request->get('clasificacion');
+
+        $incoterms->save();
+
+        return redirect('/incoterms');
     }
 
     /**
@@ -56,7 +71,8 @@ class IncotermController extends Controller
      */
     public function edit($id)
     {
-        //
+        $incoterm = Incoterm::find($id);
+        return view('incoterm.edit')->with('incoterm', $incoterm);
     }
 
     /**
@@ -68,7 +84,17 @@ class IncotermController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'clasificacion'=>'required',
+        ]);
+
+        $incoterm = Incoterm::find($id);
+
+        $incoterm->clasificacion = $request->get('clasificacion');
+
+        $incoterm->save();
+
+        return redirect('/incoterms');
     }
 
     /**
@@ -79,6 +105,8 @@ class IncotermController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $incoterm = Incoterm::find($id);
+        $incoterm->delete();
+        return redirect('/incoterms');
     }
 }
