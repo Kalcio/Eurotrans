@@ -48,10 +48,15 @@ class UserController extends Controller
             'rut'=>'required|min:8|max:9',
             'name'=>'required',
             'numero'=>'required|min:5|max:15',
-            'password'=>'required|min:5|max:15',
+            'password'=>'required|min:8|max:15',
             'email'=>'required|email',
             'direccion' => 'required',
         ]);
+
+        $request->request->add([
+            'password'=>Hash::make($request->input('paswword'))
+        ]);
+        
 
         $users = new User();
 

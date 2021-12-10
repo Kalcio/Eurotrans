@@ -17,6 +17,18 @@ class CreatePuedePoseersTable extends Migration
             $table->id();
             $table->string('estado');
             $table->timestamps();
+
+            $table->foreignID('id_servicio')
+            ->nullable()
+            ->constrained('servicios')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
+
+            $table->foreignID('id_proveedor')
+            ->nullable()
+            ->constrained('proveedors')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
         });
     }
 

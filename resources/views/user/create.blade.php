@@ -60,7 +60,7 @@
         @endif
         
     </div>
-    <a href="/clientes" class="btn btn-secondary" tabindex="9">Cancelar</a>
+    <a href="/users" class="btn btn-secondary" tabindex="9">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="10">Guardar</button>
 </form>
 @stop

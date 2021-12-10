@@ -21,6 +21,18 @@ class CreateProveesTable extends Migration
             $table->integer('precio');
             $table->string('forma_pago');
             $table->timestamps();
+
+            $table->foreignID('id_empleado')
+            ->nullable()
+            ->constrained('users')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
+
+            $table->foreignID('id_servicio')
+            ->nullable()
+            ->constrained('servicios')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
         });
     }
 

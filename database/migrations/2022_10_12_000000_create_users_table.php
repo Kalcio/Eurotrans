@@ -36,11 +36,14 @@ class CreateUsersTable extends Migration
             $table->string('direccion', 40);
             $table->timestamps();
 
-            // $table->foreignID('id_sucursal')
-            //         ->nullable()
-            //         ->constrained('sucursals')
-            //         ->cascadeOnUpdate()
-            //         ->nullOnDelete();
+            // $table->unsignedBigInteger('id_sucursal');
+            // $table->foreign('id_sucursal')->references('id')->on('sucursals');
+
+            $table->foreignID('id_sucursal')
+                    ->nullable()
+                    ->constrained('sucursals')
+                    ->cascadeOnUpdate()
+                    ->nullOnDelete();
         });
     }
 
