@@ -39,6 +39,11 @@ class RutaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'origen'=>'required|min:3',
+            'destino'=>'required|min:3',
+        ]);
+
         $rutas = new Ruta();
 
         $rutas->origen = $request->get('origen');
@@ -81,6 +86,11 @@ class RutaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'origen'=>'required|min:3',
+            'destino'=>'required|min:3',
+        ]);
+
         $ruta = Ruta::find($id);
 
         $ruta->origen = $request->get('origen');
