@@ -39,6 +39,10 @@ class TipoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'clasificacion'=>'required',
+        ]);
+
         $tipos = new Tipo();
 
         $tipos->clasificacion = $request->get('clasificacion');
@@ -80,6 +84,10 @@ class TipoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'clasificacion'=>'required',
+        ]);
+
         $tipo = Tipo::find($id);
 
         $tipo->clasificacion = $request->get('clasificacion');
