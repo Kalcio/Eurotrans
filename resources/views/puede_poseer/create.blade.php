@@ -12,7 +12,10 @@
     @csrf
     <div class="mb-3">
         <label for="" class="form-label">Estado</label>
-        <input id="estado" name="estado" type="text" class="form-control" tabindex="1">
+        <input id="estado" name="estado" type="text" class="form-control" tabindex="1" value="{{old('estado')}}" autofocus>
+        @if ($errors->has('estado'))
+            <span class="error text-danger" for="input-estado">{{ $errors->first('estado')}}</span>
+        @endif
     </div>
     <a href="/puede_poseers" class="btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
