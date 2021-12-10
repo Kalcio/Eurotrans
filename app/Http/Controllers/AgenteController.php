@@ -39,6 +39,13 @@ class AgenteController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre'=>'required',
+            'numero'=>'required|numeric|min:5',
+            'email'=>'required|email',
+            'direccion'=>'required',
+        ]);
+
         $agentes = new Agente();
 
         $agentes->nombre = $request->get('nombre');
@@ -83,6 +90,13 @@ class AgenteController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nombre'=>'required',
+            'numero'=>'required|numeric|min:5',
+            'email'=>'required|email',
+            'direccion'=>'required',
+        ]);
+
         $agente = Agente::find($id);
 
         $agente->nombre = $request->get('nombre');
