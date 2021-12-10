@@ -109,6 +109,7 @@ class UserController extends Controller
 
         $user = User::find($rut);
 
+        $user->rut = $request->get('rut');
         $user->name = $request->get('name');
         $user->numero = $request->get('numero');
         $user->email = $request->get('email');

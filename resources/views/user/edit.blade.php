@@ -8,7 +8,7 @@
 
 @section('content')
     
-<form action="/users/{{$user->rut}}" method="POST">
+<form action="/users/{{$user->id}}" method="POST">
     @csrf
     @method('PUT')
     <div class="mb-3">

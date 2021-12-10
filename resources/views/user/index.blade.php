@@ -12,6 +12,7 @@
 <table id="users" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
+            <th scope="col">Id</th>
             <th scope="col">RUT</th>
             <th scope="col">Nombre</th>
             <th scope="col">Número de contacto</th>
@@ -23,14 +24,15 @@
     <tbody>
         @foreach ($users as $user)
         <tr>
+            <td>{{$user->id}}</td>
             <td>{{$user->rut}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->numero}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->direccion}}</td>
             <td>
-                <form action="{{route('users.destroy', $user->rut)}}" method="POST">
-                    <a href="/users/{{$user->rut}}/edit" class="btn btn-info">Editar</a>
+                <form action="{{route('users.destroy', $user->id)}}" method="POST">
+                    <a href="/users/{{$user->id}}/edit" class="btn btn-info">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Borrar</button>
