@@ -53,6 +53,7 @@ class UserController extends Controller
             'password'=>'required|min:8|max:15',
             'email'=>'required|email',
             'direccion' => 'required',
+            'id_sucursal' => 'required',
         ]);
 
         $data = $request->all();
@@ -100,7 +101,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('user.edit')->with('user', $user);
+        $sucursals = Sucursal::all();
+        return view('user.edit')->with(compact('user', $user, 'sucursals'));
     }
 
     /**
@@ -118,6 +120,7 @@ class UserController extends Controller
             'numero'=>'required|min:5|max:15',
             'email'=>'required|email',
             'direccion' => 'required',
+            'id_sucursal' => 'required'
         ]);
 
         $user = User::find($id);
@@ -127,6 +130,7 @@ class UserController extends Controller
         $user->numero = $request->get('numero');
         $user->email = $request->get('email');
         $user->direccion = $request->get('direccion');
+        $user->id_sucursal = $request->get('id_sucursal');
 
         $user->save();
 
