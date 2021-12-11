@@ -12,16 +12,16 @@
     @csrf
     <div class="mb-3">
         <label for="" class="form-label">Número de contacto</label>
-        <input id="numero" name="numero" type="tel" class="form-control" tabindex="2">
+        <input id="numero" name="numero" type="text" class="form-control" tabindex="2" value="{{old('numero')}}" autofocus>
         @if ($errors->has('numero'))
-            <span class="error text-danger" for="input-name">{{ $errors->first('numero')}}</span>
+            <span class="error text-danger" for="input-numero">{{ $errors->first('numero')}}</span>
         @endif
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Dirección</label>
-        <input id="direccion" name="direccion" type="text" class="form-control" tabindex="4">
+        <input id="direccion" name="direccion" type="text" class="form-control" tabindex="4" value="{{old('direccion')}}" autofocus>
         @if ($errors->has('direccion'))
-            <span class="error text-danger" for="input-name">{{ $errors->first('direccion')}}</span>
+            <span class="error text-danger" for="input-direccion">{{ $errors->first('direccion')}}</span>
         @endif
     </div>
     <a href="/sucursals" class="btn btn-secondary" tabindex="5">Cancelar</a>
