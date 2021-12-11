@@ -40,10 +40,10 @@ class ProveedorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre'=>'required',
-            'numero'=>'required|numeric|min:5',
-            'email'=>'required|email',
-            'direccion'=>'required',
+            'nombre'=>'required|max:200',
+            'numero'=>'required|numeric|digits_between:5,15|unique:proveedors',
+            'email'=>'required|email|max:200|unique:proveedors',
+            'direccion'=>'required|max:200',
         ]);
 
         $proveedors = new Proveedor();
@@ -91,10 +91,10 @@ class ProveedorController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nombre'=>'required',
-            'numero'=>'required|numeric|min:5',
-            'email'=>'required|email',
-            'direccion'=>'required',
+            'nombre'=>'required|max:200',
+            'numero'=>'required|numeric|digits_between:5,15|unique:proveedors',
+            'email'=>'required|email|max:200|unique:proveedors',
+            'direccion'=>'required|max:200',
         ]);
 
         $proveedor = Proveedor::find($id);

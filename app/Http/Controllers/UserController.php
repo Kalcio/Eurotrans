@@ -47,12 +47,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'rut'=>'required|min:8|max:9',
-            'name'=>'required',
-            'numero'=>'required|min:5|max:15',
+            'rut'=>'required|min:8|max:9|unique:users',
+            'name'=>'required|max:200',
+            'numero'=>'required|numeric|digits_between:5,15|unique:users',
             'password'=>'required|min:8|max:15',
-            'email'=>'required|email',
-            'direccion' => 'required',
+            'email'=>'required|email|max:200|unique:users',
+            'direccion' => 'required|max:200',
             'id_sucursal' => 'required',
         ]);
 
@@ -109,17 +109,17 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $rut
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'rut'=>'required|min:8|max:9',
-            'name'=>'required',
-            'numero'=>'required|min:5|max:15',
-            'email'=>'required|email',
-            'direccion' => 'required',
+            'rut'=>'required|min:8|max:9|unique:users',
+            'name'=>'required|max:200',
+            'numero'=>'required|numeric|digits_between:5,15|unique:users',
+            'email'=>'required|email|max:200|unique:users',
+            'direccion' => 'required|max:200',
             'id_sucursal' => 'required'
         ]);
 
@@ -140,7 +140,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $rut
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

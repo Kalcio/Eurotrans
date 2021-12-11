@@ -40,9 +40,9 @@ class ServicioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'carga'=>'required',
-            'seguro'=>'required',
-            'observaciones'=>'required',
+            'carga'=>'required|max:200',
+            'seguro'=>'required|max:200',
+            'observaciones'=>'required|max:500',
         ]);
 
         $servicios = new Servicio();
@@ -89,9 +89,9 @@ class ServicioController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'carga'=>'required',
-            'seguro'=>'required|min:2',
-            'observaciones'=>'required',
+            'carga'=>'required|max:200',
+            'seguro'=>'required|max:200',
+            'observaciones'=>'required|max:500',
         ]);
 
         $servicio = Servicio::find($id);

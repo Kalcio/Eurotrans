@@ -40,7 +40,7 @@ class IncotermController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'clasificacion'=>'required',
+            'clasificacion'=>'required|max:50|unique:incoterms',
         ]);
 
         $incoterms = new Incoterm();
@@ -85,7 +85,7 @@ class IncotermController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'clasificacion'=>'required',
+            'clasificacion'=>'required|max:50|unique:incoterms',
         ]);
 
         $incoterm = Incoterm::find($id);

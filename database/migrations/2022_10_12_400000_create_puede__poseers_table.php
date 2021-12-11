@@ -15,7 +15,7 @@ class CreatePuedePoseersTable extends Migration
     {
         Schema::create('puede__poseers', function (Blueprint $table) {
             $table->id();
-            $table->string('estado');
+            $table->string('estado',50)->unique();
             $table->timestamps();
 
             $table->foreignID('id_servicio')
