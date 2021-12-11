@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Sucursal;
 
 
 class UserController extends Controller
@@ -33,7 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $sucursals = Sucursal::all();
+        return view('user.create')->with(compact('sucursals'));
     }
 
     /**
@@ -71,6 +73,7 @@ class UserController extends Controller
         $users->password = $request->get('password');
         $users->email = $request->get('email');
         $users->direccion = $request->get('direccion');
+        $users->id_sucursal = $request->get('id_sucursal');
 
         $users->save();
 
@@ -80,10 +83,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $rut
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($rut)
+    public function show($id)
     {
         //
     }
@@ -91,12 +94,12 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $rut
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($rut)
+    public function edit($id)
     {
-        $user = User::find($rut);
+        $user = User::find($id);
         return view('user.edit')->with('user', $user);
     }
 
@@ -107,7 +110,7 @@ class UserController extends Controller
      * @param  int  $rut
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $rut)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'rut'=>'required|min:8|max:9',
@@ -117,7 +120,7 @@ class UserController extends Controller
             'direccion' => 'required',
         ]);
 
-        $user = User::find($rut);
+        $user = User::find($id);
 
         $user->rut = $request->get('rut');
         $user->name = $request->get('name');
@@ -136,9 +139,9 @@ class UserController extends Controller
      * @param  int  $rut
      * @return \Illuminate\Http\Response
      */
-    public function destroy($rut)
+    public function destroy($id)
     {
-        $user = User::find($rut);
+        $user = User::find($id);
         $user->delete();
         return redirect('/users');
     }
