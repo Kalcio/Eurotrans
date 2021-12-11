@@ -49,7 +49,7 @@ class UserController extends Controller
             'name'=>'required|max:200',
             'numero'=>'required|numeric|digits_between:5,15|unique:users',
             'password'=>'required|min:8|max:15',
-            'email'=>'required|email|max:200|unique:email',
+            'email'=>'required|email|max:200|unique:users',
             'direccion' => 'required|max:200',
         ]);
 
@@ -80,10 +80,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $rut
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($rut)
+    public function show($id)
     {
         //
     }
@@ -91,12 +91,12 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $rut
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($rut)
+    public function edit($id)
     {
-        $user = User::find($rut);
+        $user = User::find($id);
         return view('user.edit')->with('user', $user);
     }
 
@@ -104,21 +104,20 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $rut
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $rut)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'rut'=>'required|min:8|max:9|unique:users',
             'name'=>'required|max:200',
             'numero'=>'required|numeric|digits_between:5,15|unique:users',
-            'password'=>'required|min:8|max:15',
-            'email'=>'required|email|max:200|unique:email',
+            'email'=>'required|email|max:200|unique:users',
             'direccion' => 'required|max:200',
         ]);
 
-        $user = User::find($rut);
+        $user = User::find($id);
 
         $user->rut = $request->get('rut');
         $user->name = $request->get('name');
@@ -134,12 +133,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $rut
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($rut)
+    public function destroy($id)
     {
-        $user = User::find($rut);
+        $user = User::find($id);
         $user->delete();
         return redirect('/users');
     }
