@@ -17,9 +17,9 @@ class CreateProveesTable extends Migration
             //$table->increments('id');
 
             $table->id();
-            $table->string('fecha');
+            $table->string('fecha',10);
             $table->integer('precio');
-            $table->string('forma_pago');
+            $table->string('forma_pago',200);
             $table->timestamps();
 
             $table->foreignID('id_empleado')

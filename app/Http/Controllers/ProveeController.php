@@ -42,7 +42,7 @@ class ProveeController extends Controller
         $request->validate([
             'fecha'=>'required|date_format:d/m/Y',
             'precio'=>'required|numeric',
-            'forma_pago'=>'required',
+            'forma_pago'=>'required|max:200',
         ]);
 
         $provees = new Provee();
@@ -91,7 +91,7 @@ class ProveeController extends Controller
         $request->validate([
             'fecha'=>'required|date_format:d/m/Y',
             'precio'=>'required|numeric',
-            'forma_pago'=>'required',
+            'forma_pago'=>'required|max:200',
         ]);
 
         $provee = Provee::find($id);

@@ -15,7 +15,7 @@ class CreateIncotermsTable extends Migration
     {
         Schema::create('incoterms', function (Blueprint $table) {
             $table->id();
-            $table->string('clasificacion');
+            $table->string('clasificacion',50)->unique();
             $table->timestamps();
         });
     }

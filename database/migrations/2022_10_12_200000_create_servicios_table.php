@@ -15,9 +15,9 @@ class CreateServiciosTable extends Migration
     {
         Schema::create('servicios', function (Blueprint $table) {
             $table->id();
-            $table->string('carga');
-            $table->string('seguro');
-            $table->string('observaciones');
+            $table->string('carga',200);
+            $table->string('seguro',200);
+            $table->string('observaciones',500);
             $table->timestamps();
 
             $table->foreignID('id_tipo')

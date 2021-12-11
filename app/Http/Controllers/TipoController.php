@@ -40,7 +40,7 @@ class TipoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'clasificacion'=>'required',
+            'clasificacion'=>'required|max:50|unique:tipos',
         ]);
 
         $tipos = new Tipo();
@@ -85,7 +85,7 @@ class TipoController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'clasificacion'=>'required',
+            'clasificacion'=>'required|max:50|unique:tipos',
         ]);
 
         $tipo = Tipo::find($id);

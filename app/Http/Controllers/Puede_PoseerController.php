@@ -40,7 +40,7 @@ class Puede_PoseerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'estado'=>'required|min:2',
+            'estado'=>'required|max:50|unique:puede_poseers',
         ]);
 
         $puede_poseers = new Puede_Poseer();
@@ -85,7 +85,7 @@ class Puede_PoseerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'estado'=>'required|min:2',
+            'estado'=>'required|max:50|unique:puede_poseers',
         ]);
 
         $puede_poseer = Puede_Poseer::find($id);
