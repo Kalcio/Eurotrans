@@ -10,6 +10,16 @@
 
 <form action="/users" method="POST">
     @csrf
+
+    <div class="form-group">
+        <label>Seleccionar Sucursal</label>
+        <select class="form-control" name="id_sucursal" id="id_sucursal">
+            <option value="">--Escoja una Sucursal--</option>
+            @foreach ($sucursals as $sucursal)
+                <option value="{{ $sucursal->id }}">{{ $sucursal->id }} - {{ $sucursal->direccion }}</option>
+            @endforeach
+        </select>
+    </div>
     <div class="mb-3">
         <label for="rut" class="form-label">RUT</label>
         <input id="rut" name="rut" type="text" class="form-control" tabindex="1" value="{{old('rut')}}" autofocus>
