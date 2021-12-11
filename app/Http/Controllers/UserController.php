@@ -53,6 +53,11 @@ class UserController extends Controller
             'direccion' => 'required',
         ]);
 
+        $data = $request->all();
+        Validator::make($data, [
+            'password' => $this->passwordRules(),
+        ])->validate();
+
         $request->request->add([
             'password'=>Hash::make($request->input('paswword'))
         ]);
