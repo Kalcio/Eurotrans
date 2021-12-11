@@ -45,12 +45,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'rut'=>'required|min:8|max:9',
-            'name'=>'required',
-            'numero'=>'required|min:5|max:15',
+            'rut'=>'required|min:8|max:9|unique:users',
+            'name'=>'required|max:200',
+            'numero'=>'required|numeric|digits_between:5,15|unique:users',
             'password'=>'required|min:8|max:15',
-            'email'=>'required|email',
-            'direccion' => 'required',
+            'email'=>'required|email|max:200|unique:email',
+            'direccion' => 'required|max:200',
         ]);
 
         $data = $request->all();
@@ -110,11 +110,12 @@ class UserController extends Controller
     public function update(Request $request, $rut)
     {
         $request->validate([
-            'rut'=>'required|min:8|max:9',
-            'name'=>'required',
-            'numero'=>'required|min:5|max:15',
-            'email'=>'required|email',
-            'direccion' => 'required',
+            'rut'=>'required|min:8|max:9|unique:users',
+            'name'=>'required|max:200',
+            'numero'=>'required|numeric|digits_between:5,15|unique:users',
+            'password'=>'required|min:8|max:15',
+            'email'=>'required|email|max:200|unique:email',
+            'direccion' => 'required|max:200',
         ]);
 
         $user = User::find($rut);
