@@ -11,6 +11,18 @@
 <form action="/users/{{$user->id}}" method="POST">
     @csrf
     @method('PUT')
+    <div class="form-group">
+        <label>Seleccionar Sucursal</label>
+        <select class="form-control" name="id_sucursal" id="id_sucursal">
+            <option value="">{{ $user->id_sucursal }}</option>
+            @foreach ($sucursals as $sucursal)
+                <option value="{{ $sucursal->id }}">{{ $sucursal->id }} - {{ $sucursal->direccion }}</option>
+            @endforeach
+        </select>
+        @if ($errors->has('id_sucursal'))
+            <span class="error text-danger" for="id_sucursal">El campo sucursal es obligatorio</span>
+        @endif
+    </div>
     <div class="mb-3">
         <label for="" class="form-label">RUT</label>
         <input id="rut" name="rut" type="text" class="form-control" value="{{$user->rut}}" value="{{old('rut')}}" autofocus>

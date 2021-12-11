@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Sucursal;
 
 
 class UserController extends Controller
@@ -33,7 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        $sucursals = Sucursal::all();
+        return view('user.create')->with(compact('sucursals'));
     }
 
     /**
@@ -51,6 +53,7 @@ class UserController extends Controller
             'password'=>'required|min:8|max:15',
             'email'=>'required|email|max:200|unique:users',
             'direccion' => 'required|max:200',
+            'id_sucursal' => 'required',
         ]);
 
         $data = $request->all();
@@ -71,6 +74,7 @@ class UserController extends Controller
         $users->password = $request->get('password');
         $users->email = $request->get('email');
         $users->direccion = $request->get('direccion');
+        $users->id_sucursal = $request->get('id_sucursal');
 
         $users->save();
 
@@ -97,7 +101,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('user.edit')->with('user', $user);
+        $sucursals = Sucursal::all();
+        return view('user.edit')->with(compact('user', $user, 'sucursals'));
     }
 
     /**
@@ -115,6 +120,7 @@ class UserController extends Controller
             'numero'=>'required|numeric|digits_between:5,15|unique:users',
             'email'=>'required|email|max:200|unique:users',
             'direccion' => 'required|max:200',
+            'id_sucursal' => 'required'
         ]);
 
         $user = User::find($id);
@@ -124,6 +130,7 @@ class UserController extends Controller
         $user->numero = $request->get('numero');
         $user->email = $request->get('email');
         $user->direccion = $request->get('direccion');
+        $user->id_sucursal = $request->get('id_sucursal');
 
         $user->save();
 

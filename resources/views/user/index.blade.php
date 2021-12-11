@@ -18,6 +18,7 @@
             <th scope="col">Número de contacto</th>
             <th scope="col">Correo</th>
             <th scope="col">Dirección</th>
+            <th scope="col">Sucursal</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
@@ -30,6 +31,7 @@
             <td>{{$user->numero}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->direccion}}</td>
+            <td>{{$user->id_sucursal}}</td>
             <td>
                 <form action="{{route('users.destroy', $user->id)}}" method="POST">
                     <a href="/users/{{$user->id}}/edit" class="btn btn-info">Editar</a>
@@ -83,7 +85,7 @@ $(document).ready(function() {
                 titleAttr: 'Exportar a Excel',
                 className: 'btn btn-success',
                 exportOptions: {
-                    columns: [':visible']
+                    columns: [':visible'],
                 }
             },
             {
@@ -92,7 +94,8 @@ $(document).ready(function() {
                 titleAttr: 'Exportar a PDF',
                 className: 'btn btn-danger',
                 exportOptions: {
-                    columns: [':visible']
+                    columns: [':visible'],
+                    hide: [7]
                 }
             },
             { 
