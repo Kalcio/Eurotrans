@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use App\Models\Agente;
 
 class AgenteController extends Controller
@@ -92,8 +94,8 @@ class AgenteController extends Controller
     {
         $request->validate([
             'nombre'=>'required|max:200',
-            'numero'=>'required|numeric|digits_between:5,15|unique:agentes',
-            'email'=>'required|email|max:200|unique:agentes',
+            'numero'=>['required','numeric','digits_between:5,15',Rule::unique('agentes')->ignore($id)],
+            'email'=>['required','email','max:200',Rule::unique('agentes')->ignore($id)],
             'direccion'=>'required|max:200',
         ]);
 

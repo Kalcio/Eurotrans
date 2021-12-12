@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Puede_Poseer;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
+
 
 class Puede_PoseerController extends Controller
 {
@@ -85,7 +89,7 @@ class Puede_PoseerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'estado'=>'required|max:50|unique:puede_poseers',
+            'estado'=>['required','max:50',Rule::unique('puede_poseers')->ignore($id)],
         ]);
 
         $puede_poseer = Puede_Poseer::find($id);
