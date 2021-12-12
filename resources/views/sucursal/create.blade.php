@@ -24,8 +24,15 @@
             <span class="error text-danger" for="input-direccion">{{ $errors->first('direccion')}}</span>
         @endif
     </div>
-    <a href="/sucursals" class="btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
+    <div class="mb-3">
+        <label for="" class="form-label">Región</label>
+        <input id="region" name="region" type="text" class="form-control" tabindex="5" value="{{old('region')}}" autofocus>
+        @if ($errors->has('region'))
+            <span class="error text-danger" for="input-region">{{ $errors->first('region')}}</span>
+        @endif
+    </div>
+    <a href="/sucursals" class="btn btn-secondary" tabindex="6">Cancelar</a>
+    <button type="submit" class="btn btn-primary" tabindex="7">Guardar</button>
 </form>
 @stop
 

@@ -14,9 +14,9 @@
     <div class="form-group">
         <label>Seleccionar Sucursal</label>
         <select class="form-control" name="id_sucursal" id="id_sucursal">
-            <option value="">{{ $user->id_sucursal }}</option>
+            <option value="">--Seleccione una Sucursal--</option>
             @foreach ($sucursals as $sucursal)
-                <option value="{{ $sucursal->id }}">{{ $sucursal->id }} - {{ $sucursal->direccion }}</option>
+                <option value="{{ $sucursal->id }}">{{ $sucursal->id }} - {{ $sucursal->region }}</option>
             @endforeach
         </select>
         @if ($errors->has('id_sucursal'))
