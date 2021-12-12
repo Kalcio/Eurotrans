@@ -50,7 +50,7 @@ class UserController extends Controller
         $request->validate([
             'rut'=>'required|min:8|max:9|unique:users',
             'name'=>'required|max:200',
-            'numero'=>'required|numeric|digits_between:5,15|unique:users',
+            'numero'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8|max:15|unique:users',
             'password'=>'required|min:8|max:15',
             'email'=>'required|email|max:200|unique:users',
             'direccion' => 'required|max:200',
@@ -120,7 +120,7 @@ class UserController extends Controller
         $request->validate([
             'rut'=>['required','min:8','max:9',Rule::unique('users')->ignore($id)],
             'name'=>'required|max:200',
-            'numero'=>['required','numeric','digits_between:5,15', Rule::unique('users')->ignore($id)],
+            'numero'=>['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:8','max:15', Rule::unique('users')->ignore($id)],
             'email'=>['required','email','max:200', Rule::unique('users')->ignore($id)],
             'direccion' => 'required|max:200',
             'id_sucursal' => 'required'
