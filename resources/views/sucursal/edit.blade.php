@@ -25,6 +25,13 @@
             <span class="error text-danger" for="input-name">{{ $errors->first('direccion')}}</span>
         @endif
     </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Region</label>
+        <input id="region" name="region" type="text" class="form-control" value="{{$sucursal->region}}">
+        @if ($errors->has('region'))
+            <span class="error text-danger" for="input-name">{{ $errors->first('region')}}</span>
+        @endif
+    </div>
     <a href="/sucursals" class="btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="6">Guardar</button>
 </form>

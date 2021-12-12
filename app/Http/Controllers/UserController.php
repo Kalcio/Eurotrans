@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Sucursal;
 
@@ -114,16 +115,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = User::find($id);
+
         $request->validate([
-            'rut'=>'required|min:8|max:9|unique:users',
+            'rut'=>['required','min:8','max:9',Rule::unique('users')->ignore($id)],
             'name'=>'required|max:200',
-            'numero'=>'required|numeric|digits_between:5,15|unique:users',
-            'email'=>'required|email|max:200|unique:users',
+            'numero'=>['required','numeric','digits_between:5,15', Rule::unique('users')->ignore($id)],
+            'email'=>['required','email','max:200', Rule::unique('users')->ignore($id)],
             'direccion' => 'required|max:200',
             'id_sucursal' => 'required'
         ]);
-
-        $user = User::find($id);
 
         $user->rut = $request->get('rut');
         $user->name = $request->get('name');

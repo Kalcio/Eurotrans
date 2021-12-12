@@ -15,6 +15,7 @@
             <th scope="col">ID</th>
             <th scope="col">Número de contacto</th>
             <th scope="col">Dirección</th>
+            <th scope="col">Región</th>
             <th scope="col">Acciones</th>
         </tr>
     </thead>
@@ -24,6 +25,7 @@
             <td>{{$sucursal->id}}</td>
             <td>{{$sucursal->numero}}</td>
             <td>{{$sucursal->direccion}}</td>
+            <td>{{$sucursal->region}}</td>
             <td>
                 <form action="{{route('sucursals.destroy', $sucursal->id)}}" method="POST">
                     <a href="/sucursals/{{$sucursal->id}}/edit" class="btn btn-info">Editar</a>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use App\Models\Proveedor;
 
 class ProveedorController extends Controller
@@ -92,8 +94,8 @@ class ProveedorController extends Controller
     {
         $request->validate([
             'nombre'=>'required|max:200',
-            'numero'=>'required|numeric|digits_between:5,15|unique:proveedors',
-            'email'=>'required|email|max:200|unique:proveedors',
+            'numero'=>['required','numeric','digits_between:5,15',Rule::unique('proveedors')->ignore($id)],
+            'email'=>['required','email','max:200',Rule::unique('proveedors')->ignore($id)],
             'direccion'=>'required|max:200',
         ]);
 

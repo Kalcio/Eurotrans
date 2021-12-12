@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sucursal;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
 
 class SucursalController extends Controller
 {
@@ -41,13 +44,15 @@ class SucursalController extends Controller
     {
         $request->validate([
             'numero' => 'required|numeric|digits_between:5,15|unique:sucursals',
-            'direccion' => 'required',
+            'direccion' => 'required|max:200',
+            'region' => 'required|max:50'
         ]);
 
         $sucursals = new Sucursal();
 
         $sucursals->numero = $request->get('numero');
         $sucursals->direccion = $request->get('direccion');
+        $sucursals->region = $request->get('region');
 
         $sucursals->save();
 
@@ -87,14 +92,16 @@ class SucursalController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'numero' => 'required|numeric|digits_between:5,15|unique:sucursals',
-            'direccion' => 'required',
+            'numero' => ['required','numeric','digits_between:5,15',Rule::unique('sucursals')->ignore($id)],
+            'direccion' => 'required|max:200',
+            'region' => 'required|max:50'
         ]);
 
         $sucursal = Sucursal::find($id);
 
         $sucursal->numero = $request->get('numero');
         $sucursal->direccion = $request->get('direccion');
+        $sucursal->region = $request->get('region');
 
         $sucursal->save();
 

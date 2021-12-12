@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use App\Models\Incoterm;
 
 class IncotermController extends Controller
@@ -85,7 +87,7 @@ class IncotermController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'clasificacion'=>'required|max:50|unique:incoterms',
+            'clasificacion'=>['required','max:50',Rule::unique('incoterms')->ignore($id)],
         ]);
 
         $incoterm = Incoterm::find($id);
