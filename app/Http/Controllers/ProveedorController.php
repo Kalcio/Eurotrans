@@ -43,7 +43,7 @@ class ProveedorController extends Controller
     {
         $request->validate([
             'nombre'=>'required|max:200',
-            'numero'=>'required|numeric|digits_between:5,15|unique:proveedors',
+            'numero'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8|max:15|unique:proveedors',
             'email'=>'required|email|max:200|unique:proveedors',
             'direccion'=>'required|max:200',
         ]);
@@ -94,7 +94,7 @@ class ProveedorController extends Controller
     {
         $request->validate([
             'nombre'=>'required|max:200',
-            'numero'=>['required','numeric','digits_between:5,15',Rule::unique('proveedors')->ignore($id)],
+            'numero'=>['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:8','max:15',Rule::unique('proveedors')->ignore($id)],
             'email'=>['required','email','max:200',Rule::unique('proveedors')->ignore($id)],
             'direccion'=>'required|max:200',
         ]);

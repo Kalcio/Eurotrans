@@ -43,7 +43,7 @@ class SucursalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'numero' => 'required|numeric|digits_between:5,15|unique:sucursals',
+            'numero' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8|max:15|unique:sucursals',
             'direccion' => 'required|max:200',
             'region' => 'required|max:50'
         ]);
@@ -92,7 +92,7 @@ class SucursalController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'numero' => ['required','numeric','digits_between:5,15',Rule::unique('sucursals')->ignore($id)],
+            'numero' => ['required','regex:/^([0-9\s\-\+\(\)]*)$/','min:8','max:15',Rule::unique('sucursals')->ignore($id)],
             'direccion' => 'required|max:200',
             'region' => 'required|max:50'
         ]);
