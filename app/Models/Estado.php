@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Estado extends Model
 {
     use HasFactory;
+    public function servicios(){
+        return $this->hasMany(Servicio::class,'id');
+    }
 }

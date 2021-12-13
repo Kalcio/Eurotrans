@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tipo extends Model
 {
     use HasFactory;
+
+    public function sucursales(){
+        return $this->hasMany(Servicio::class,'id');
+    }
 }

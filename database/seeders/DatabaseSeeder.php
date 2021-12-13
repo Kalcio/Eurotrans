@@ -19,6 +19,10 @@ class DatabaseSeeder extends Seeder
             AgenteSeeder::class,
             ProveedorSeeder::class,
             ClienteSeeder::class,
-    ]);
+            TipoSeeder::class,
+            RutaSeeder::class,
+            EstadoSeeder::class,
+            IncotermSeeder::class,
+        ]);
     }
 }

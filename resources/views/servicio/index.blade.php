@@ -13,6 +13,12 @@
     <thead class="bg-primary text-white">
         <tr>
             <th scope="col">ID</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Ruta</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Incoterm</th>
+            <th scope="col">Agente</th>
             <th scope="col">Carga</th>
             <th scope="col">Seguro</th>
             <th scope="col">Observaciones</th>
@@ -23,6 +29,12 @@
         @foreach ($servicios as $servicio)
         <tr>
             <td>{{$servicio->id}}</td>
+            <td>{{$servicio->id_cliente}} - {{$servicio->clientes->nombre}}</td>
+            <td>{{$servicio->tipos->clasificacion}}</td>
+            <td>{{$servicio->rutas->origen}} a {{$servicio->rutas->destino}}</td>
+            <td>{{$servicio->id_estado}} - {{$servicio->estados->situacion}}</td>
+            <td>{{$servicio->incoterms->clasificacion}}</td>
+            <td>{{$servicio->id_agente}} - {{$servicio->agentes->nombre}}</td>
             <td>{{$servicio->carga}}</td>
             <td>{{$servicio->seguro}}</td>
             <td>{{$servicio->observaciones}}</td>
