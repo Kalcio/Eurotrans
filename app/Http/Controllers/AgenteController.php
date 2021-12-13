@@ -127,6 +127,6 @@ class AgenteController extends Controller
     {
         $agente = Agente::find($id);
         $agente->delete();
-        return redirect('/agentes');
+        return redirect('/agentes')->with('eliminar','ok');
     }
 }

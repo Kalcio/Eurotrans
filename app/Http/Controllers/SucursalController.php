@@ -118,7 +118,8 @@ class SucursalController extends Controller
     {
         $sucursal = Sucursal::find($id);
         $sucursal->delete();
-        return redirect('/sucursals');
+
+        return redirect('/sucursals')->with('eliminar', 'ok');
     }
 
     public function contar()

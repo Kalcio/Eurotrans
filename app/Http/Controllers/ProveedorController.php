@@ -121,7 +121,8 @@ class ProveedorController extends Controller
     {
         $proveedor = Proveedor::find($id);
         $proveedor->delete();
-        return redirect('/proveedors');
+
+        return redirect('/proveedors')->with('eliminar', 'ok');
     }
 
     public function contar()

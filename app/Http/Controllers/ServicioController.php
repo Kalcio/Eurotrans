@@ -173,6 +173,6 @@ class ServicioController extends Controller
     {
         $servicio = Servicio::find($id);
         $servicio->delete();
-        return redirect('/servicios');
+        return redirect('/servicios')->with('eliminar', 'ok');
     }
 }
