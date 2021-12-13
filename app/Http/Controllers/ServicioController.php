@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Servicio;
+use App\Models\Cliente;
+use App\Models\Tipo;
+use App\Models\Ruta;
+use App\Models\Estado;
+use App\Models\Incoterm;
+use App\Models\Agente;
 
 class ServicioController extends Controller
 {
@@ -28,7 +34,14 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        return view('servicio.create');
+        $clientes = Cliente::all();
+        $tipos = Tipo::all();
+        $rutas = Ruta::all();
+        $estados = Estado::all();
+        $incoterms = Incoterm::all();
+        $agentes = Agente::all();
+
+        return view('servicio.create')->with(compact('clientes','tipos','rutas','estados','incoterms','agentes'));
     }
 
     /**
@@ -43,6 +56,14 @@ class ServicioController extends Controller
             'carga'=>'required|max:200',
             'seguro'=>'required|max:200',
             'observaciones'=>'required|max:500',
+            'id_cliente'=>'required',
+            'id_tipo'=>'required',
+            'id_ruta'=>'required',
+            'id_estado'=>'required',
+            'id_incoterm'=>'required',
+            'id_agente'=>'required',
+            'carga'=>'required',
+            'seguro'=>'required',
         ]);
 
         $servicios = new Servicio();
@@ -50,6 +71,14 @@ class ServicioController extends Controller
         $servicios->carga = $request->get('carga');
         $servicios->seguro = $request->get('seguro');
         $servicios->observaciones = $request->get('observaciones');
+        $servicios->id_cliente = $request->get('id_cliente');
+        $servicios->id_tipo = $request->get('id_tipo');
+        $servicios->id_ruta = $request->get('id_ruta');
+        $servicios->id_estado = $request->get('id_estado');
+        $servicios->id_incoterm = $request->get('id_incoterm');
+        $servicio->id_agente = $request->get('id_agente');
+        $servicios->carga = $request->get('carga');
+        $servicios->seguro = $request->get('seguro');
 
         $servicios->save();
 
@@ -76,7 +105,14 @@ class ServicioController extends Controller
     public function edit($id)
     {
         $servicio = Servicio::find($id);
-        return view('servicio.edit')->with('servicio', $servicio);
+        $clientes = Cliente::all();
+        $tipos = Tipo::all();
+        $rutas = Ruta::all();
+        $estados = Estado::all();
+        $incoterms = Incoterm::all();
+        $agentes = Agente::all();
+        
+        return view('servicio.edit')->with(compact('servicio', $servicio,'clientes','tipos','rutas','estados','incoterms','agentes'));
     }
 
     /**
@@ -92,6 +128,14 @@ class ServicioController extends Controller
             'carga'=>'required|max:200',
             'seguro'=>'required|max:200',
             'observaciones'=>'required|max:500',
+            'id_cliente'=>'required',
+            'id_tipo'=>'required',
+            'id_ruta'=>'required',
+            'id_estado'=>'required',
+            'id_incoterm'=>'required',
+            'id_agente'=>'required',
+            'carga'=>'required',
+            'seguro'=>'required',
         ]);
 
         $servicio = Servicio::find($id);
@@ -99,6 +143,14 @@ class ServicioController extends Controller
         $servicio->carga = $request->get('carga');
         $servicio->seguro = $request->get('seguro');
         $servicio->observaciones = $request->get('observaciones');
+        $servicio->id_cliente = $request->get('id_cliente');
+        $servicio->id_tipo = $request->get('id_tipo');
+        $servicio->id_ruta = $request->get('id_ruta');
+        $servicio->id_estado = $request->get('id_estado');
+        $servicio->id_incoterm = $request->get('id_incoterm');
+        $servicio->id_agente = $request->get('id_agente');
+        $servicio->carga = $request->get('carga');
+        $servicio->seguro = $request->get('seguro');
 
         $servicio->save();
 
