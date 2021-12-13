@@ -157,6 +157,12 @@ class ServicioController extends Controller
         return redirect('/servicios');
     }
 
+    public function contar()
+    {
+        $count = Servicio::count();
+        return $count;
+    }
+
     /**
      * Remove the specified resource from storage.
      *

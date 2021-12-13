@@ -111,6 +111,12 @@ class AgenteController extends Controller
         return redirect('/agentes');
     }
 
+    public function contar()
+    {
+        $count = Agente::count();
+        return $count;
+    }
+
     /**
      * Remove the specified resource from storage.
      *

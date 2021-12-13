@@ -71,6 +71,35 @@
                 </div>
             </div>
             <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>{{App\Models\Agente::count()}}</h3>
+
+                        <p>Agentes</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <a href="/agentes" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>{{App\Models\Servicio::count()}}</h3>
+
+                        <p>Servicios</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <a href="/servicios" class="small-box-footer">Más Información <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
         </div>
     </div>
     

@@ -191,9 +191,9 @@ return [
     'dashboard_url' => 'dash',
     'logout_url' => 'logout',
     'login_url' => 'login',
-    'register_url' => 'register',
-    'password_reset_url' => 'password/reset',
-    'password_email_url' => 'password/email',
+    'register_url' => false,
+    'password_reset_url' => false,
+    'password_email_url' => false,
     'profile_url' => false,
 
     /*
@@ -283,6 +283,7 @@ return [
             'icon'        => 'far fa-fw fa-file',
             'label'       => 'CRUD',
             'label_color' => 'warning',
+            'icon' => 'fas fa-database',
         ],
         // [
         //     'text'        => 'Tipos',
@@ -321,14 +322,14 @@ return [
             'label_color' => 'warning',
             'icon' => 'fas fa-truck-loading'
         ],
-        [
-            'text'        => 'Estados Envíos',
-            'url'         => 'estados',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 'CRUD',
-            'label_color' => 'warning',
-            'icon' => 'fas fa-exclamation-circle'
-        ],
+        // [
+        //     'text'        => 'Estados Envíos',
+        //     'url'         => 'estados',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 'CRUD',
+        //     'label_color' => 'warning',
+        //     'icon' => 'fas fa-exclamation-circle'
+        // ],
         // [
         //     'text'        => 'Incoterms',
         //     'url'         => 'incoterms',
