@@ -15,6 +15,7 @@
         <div class="form-group mb-3 col-4" >
             <label>Seleccionar cliente</label>
             <select class="form-control" name="id_cliente" id="id_cliente">
+                <option value="{{ $servicio->clientes->id }}">{{ $servicio->clientes->id }} - {{ $servicio->clientes->nombre }}</option>
                 @foreach ($clientes as $cliente)
                     <option value="{{ $cliente->id }}">{{ $cliente->id }} - {{ $cliente->nombre }}</option>
                 @endforeach
@@ -26,7 +27,7 @@
         <div class="form-group mb-3 col-4" >
             <label>Seleccionar tipo</label>
             <select class="form-control" name="id_tipo" id="id_tipo">
-                <option value="">--Seleccione el tipo de transporte--</option>
+                <option value="{{ $servicio->tipos->id }}">{{ $servicio->tipos->id }} - {{ $servicio->tipos->clasificacion }}</option>
                 @foreach ($tipos as $tipo)
                     <option value="{{ $tipo->id }}">{{ $tipo->id }} - {{ $tipo->clasificacion }}</option>
                 @endforeach
@@ -38,7 +39,7 @@
         <div class="form-group mb-3 col-4" >
             <label>Seleccionar Ruta</label>
             <select class="form-control" name="id_ruta" id="id_ruta">
-                <option value="">--Seleccione una Ruta--</option>
+                <option value="{{ $servicio->rutas->id }}">{{ $servicio->rutas->id }} - {{ $servicio->rutas->origen }} a {{ $servicio->rutas->destino }}</option>
                 @foreach ($rutas as $ruta)
                     <option value="{{ $ruta->id }}">{{ $ruta->id }} - {{ $ruta->origen }} -> {{ $ruta->destino }}</option>
                 @endforeach
@@ -50,7 +51,7 @@
         <div class="form-group mb-3 col-4" >
             <label>Seleccionar Estado</label>
             <select class="form-control" name="id_estado" id="id_estado">
-                <option value="">--Seleccione un Estado--</option>
+                <option value="{{ $servicio->estados->id }}">{{ $servicio->estados->id }} - {{ $servicio->estados->situacion }}</option>
                 @foreach ($estados as $estado)
                     <option value="{{ $estado->id }}">{{ $estado->id }} - {{ $estado->situacion }}</option>
                 @endforeach
@@ -62,7 +63,7 @@
         <div class="form-group mb-3 col-4" >
             <label>Seleccionar norma Incoterm</label>
             <select class="form-control" name="id_incoterm" id="id_incoterm">
-                <option value="">--Seleccione norma Incoterm--</option>
+                <option value="{{ $servicio->incoterms->id }}">{{ $servicio->incoterms->id }} - {{ $servicio->incoterms->clasificacion }}</option>
                 @foreach ($incoterms as $incoterm)
                     <option value="{{ $incoterm->id }}">{{ $incoterm->id }} - {{ $incoterm->clasificacion }}</option>
                 @endforeach
@@ -74,7 +75,7 @@
         <div class="form-group mb-3 col-4" >
             <label>Seleccionar Agente</label>
             <select class="form-control" name="id_agente" id="id_agente">
-                <option value="">--Seleccione un Agente--</option>
+                <option value="{{ $servicio->agentes->id }}">{{ $servicio->agentes->id }} - {{ $servicio->agentes->nombre }}</option>
                 @foreach ($agentes as $agente)
                     <option value="{{ $agente->id }}">{{ $agente->id }} - {{ $agente->nombre }}</option>
                 @endforeach
