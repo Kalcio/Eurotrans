@@ -237,10 +237,10 @@ return [
         ],
 
         // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'Buscar',
-        ],
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'false,
+        // ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',

@@ -148,7 +148,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect('/users');
+        return redirect('/users')->with('eliminar', 'ok');
     }
 
     public function contar()

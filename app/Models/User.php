@@ -66,6 +66,6 @@ class User extends Authenticatable
     ];
 
     public function sucursales(){
-        return $this->belongsTo(Sucursal::class,'id_sucursal');
+        return $this->belongsTo(Sucursal::class,'id_sucursal')->withDefault(['region' => 'Null']);
     }
 }
