@@ -31,7 +31,7 @@
             <td>{{$user->numero}}</td>
             <td>{{$user->email}}</td>
             <td>{{$user->direccion}}</td>
-            <td>{{$user->id_sucursal}}</td>
+            <td>{{$user->id_sucursal}} - {{$user->sucursales->region}}</td>
             <td>
                 <form action="{{route('users.destroy', $user->id)}}" method="POST">
                     <a href="/users/{{$user->id}}/edit" class="btn btn-info">Editar</a>
