@@ -76,7 +76,7 @@ class ServicioController extends Controller
         $servicios->id_ruta = $request->get('id_ruta');
         $servicios->id_estado = $request->get('id_estado');
         $servicios->id_incoterm = $request->get('id_incoterm');
-        $servicio->id_agente = $request->get('id_agente');
+        $servicios->id_agente = $request->get('id_agente');
         $servicios->carga = $request->get('carga');
         $servicios->seguro = $request->get('seguro');
 
