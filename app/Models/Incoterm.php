@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Incoterm extends Model
 {
     use HasFactory;
+    public function servicios(){
+        return $this->hasMany(Servicio::class,'id');
+    }
 }
