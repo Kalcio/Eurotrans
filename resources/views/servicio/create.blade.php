@@ -25,7 +25,7 @@
         </div>
         <div class="form-group mb-3 col-4" >
             <label>Seleccionar tipo</label>
-            <select class="form-control" name="id_tip" id="id_tip">
+            <select class="form-control" name="id_tipo" id="id_tipo">
                 <option value="">--Seleccione el tipo de transporte--</option>
                 @foreach ($tipos as $tipo)
                     <option value="{{ $tipo->id }}">{{ $tipo->id }} - {{ $tipo->clasificacion }}</option>
