@@ -43,12 +43,14 @@
             <td>{{$servicio->created_at}}</td>
             <td>{{$servicio->updated_at}}</td>
             <td>
-                <a href="/servicios/{{$servicio->id}}/edit" class="btn btn-info">Editar</a>
-                <form action="{{route('servicios.destroy', $servicio->id)}}"  class="alertButton" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Borrar</button>
-                </form>
+                <div class="btn-group">
+                    <a href="/servicios/{{$servicio->id}}/edit" class="btn btn-info">Editar</a>
+                    <form action="{{route('servicios.destroy', $servicio->id)}}"  class="alertButton" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
+                </div>
             </td>
         </tr>
         @endforeach

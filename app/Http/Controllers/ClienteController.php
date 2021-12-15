@@ -111,6 +111,12 @@ class ClienteController extends Controller
         return redirect('/clientes');
     }
 
+    public function contar()
+    {
+        $count = Cliente::count();
+        return $count;
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -121,12 +127,6 @@ class ClienteController extends Controller
     {
         $cliente = Cliente::find($id);
         $cliente->delete();
-        return redirect('/clientes');
-    }
-
-    public function contar()
-    {
-        $count = Cliente::count();
-        return $count;
+        return redirect('/clientes')->with('eliminar','ok');
     }
 }

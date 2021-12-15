@@ -68,14 +68,14 @@
         <label for="password" class="form-label">Contraseña</label>
         <input id="password" name="password" type="password" class="form-control" required autocomplete="new-password" tabindex="6">
         @if ($errors->has('password'))
-            <span class="error text-danger" for="input-password">{{ $errors->first('password')}}</span>
+            <span class="error text-danger" for="input-password">Error al confirmar contraseña</span>
         @endif
     </div>
     <div class="mb-3">
-        <label for="password_confirmation" class="form-label">Contraseña</label>
+        <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
         <input id="password_confirmation" name="password_confirmation" type="password" class="form-control" tabindex="7">
         @if ($errors->has('password'))
-            <span class="error text-danger" for="input-password">{{ $errors->first('password')}}</span>
+            <span class="error text-danger" for="input-password">Error al confirmar contraseña</span>
         @endif
         
     </div>

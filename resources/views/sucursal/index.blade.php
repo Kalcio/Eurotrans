@@ -27,12 +27,14 @@
             <td>{{$sucursal->numero}}</td>
             <td>{{$sucursal->direccion}}</td>
             <td>
-                <a href="/sucursals/{{$sucursal->id}}/edit" class="btn btn-info">Editar</a>
-                <form action="{{route('sucursals.destroy', $sucursal->id)}}" class="alertButton" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Borrar</button>
-                </form>
+                <div class="btn-group">
+                    <a href="/sucursals/{{$sucursal->id}}/edit" class="btn btn-info">Editar</a>
+                    <form action="{{route('sucursals.destroy', $sucursal->id)}}" class="alertButton" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
+                </div>
             </td>
         </tr>
         @endforeach

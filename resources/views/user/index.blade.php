@@ -33,12 +33,14 @@
             <td>{{$user->direccion}}</td>
             <td>{{$user->id_sucursal}} - {{$user->sucursales->region}}</td>
             <td>
-                <a href="/users/{{$user->id}}/edit" class="btn btn-info">Editar</a>
-                <form action="{{route('users.destroy', $user->id)}}" class="alertButton" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Borrar</button>
-                </form>
+                <div class="btn-group">
+                    <a href="/users/{{$user->id}}/edit" class="btn btn-info">Editar</a>
+                    <form action="{{route('users.destroy', $user->id)}}" class="alertButton" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
+                </div>
             </td>
         </tr>
         @endforeach

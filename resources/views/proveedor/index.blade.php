@@ -29,12 +29,14 @@
             <td>{{$proveedor->email}}</td>
             <td>{{$proveedor->direccion}}</td>
             <td>
-                <a href="/proveedors/{{$proveedor->id}}/edit" class="btn btn-info">Editar</a>
-                <form action="{{route('proveedors.destroy', $proveedor->id)}}" class="alertButton" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Borrar</button>
-                </form>
+                <div class="btn-group">
+                    <a href="/proveedors/{{$proveedor->id}}/edit" class="btn btn-info">Editar</a>
+                    <form action="{{route('proveedors.destroy', $proveedor->id)}}" class="alertButton" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
+                </div>
             </td>
         </tr>
         @endforeach

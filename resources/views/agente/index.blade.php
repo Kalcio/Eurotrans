@@ -29,12 +29,14 @@
             <td>{{$agente->email}}</td>
             <td>{{$agente->direccion}}</td>
             <td>
-                <a href="/agentes/{{$agente->id}}/edit" class="btn btn-info">Editar</a>
-                <form action="{{route('agentes.destroy', $agente->id)}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Borrar</button>
-                </form>
+                <div class="btn-group">
+                    <a href="/agentes/{{$agente->id}}/edit" class="btn btn-info">Editar</a>
+                    <form action="{{route('agentes.destroy', $agente->id)}}" class="alertButton" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
+                </div>
             </td>
         </tr>
         @endforeach
